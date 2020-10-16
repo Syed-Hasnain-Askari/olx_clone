@@ -1,0 +1,77 @@
+{
+    "product":[
+        {
+            "id":1,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today"
+
+        },
+        {
+            "id":2,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today"
+
+        },
+        {
+            "id":3,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/Components/Container/images/watch.jpg"
+
+        },
+        {
+            "id":4,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today"
+
+        },
+        {
+            "id":5,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today"
+
+        },
+        {
+            "id":6,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today"
+
+        },
+        {
+            "id":7,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today"
+
+        },
+        {
+            "id":8,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today"
+
+        }
+    ]
+}

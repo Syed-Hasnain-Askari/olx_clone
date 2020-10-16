@@ -1,0 +1,137 @@
+*{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.top-navbar{
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+  height: 68px;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.logo{
+  background:transparent;
+  width: 60px;
+  height: 60px;
+}
+.input-icons ion-icon{
+  position: absolute; 
+  width: 25px;
+  height: 25px;
+  fill-rule: evenodd;
+  padding: 10px; 
+  min-width: 50px; 
+  text-align: center; 
+  margin-top: 12px;
+  margin-left: 0px;
+}
+.input-icons { 
+  width: 100%; 
+  margin-bottom: 10px; 
+} 
+.location{
+    margin-top: 9px;
+    height: 48px;
+    width: 100%;
+    outline: 0;
+    border-width: 0;
+    font-size: 16px;
+    padding: 0 8px;
+    border: 2px solid #002f34;
+    border-radius: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: #fff;
+    padding: 0 0 0 16px;
+    text-align: center;
+}
+.nav-item-location{
+  width: 300px;
+  margin-left: 10px;
+}
+.dropdown-menu{
+  width: 300px;
+}
+.chevron-down ion-icon{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-left: 50px;
+  margin-top: -12px;
+  fill: #002f34;
+}
+.nav-item-find{
+    width: 500px;
+}
+.find{
+  margin-top: 9px;
+  margin-left: 10px;
+  height: 48px;
+  width: 100%;
+  outline: 0;
+  border-width: 0;
+  font-size: 16px;
+  padding: 0 8px;
+  border: 2px solid #002f34;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: #fff;
+  padding: 0 0 0 16px;
+  text-align: left;
+}
+.search-icon{
+    min-width: 48px;
+    height: 48px;
+    cursor: pointer;
+    background-color: #002f34;
+    border-radius: 0 4px 4px 0;
+    margin-top: 9px;
+}
+.search-icon ion-icon{
+  width: 25px;
+  height: 25px;
+  color: white;
+}
+a {
+  color: #002f34;
+  text-decoration: none;
+}
+
+a:hover 
+{ 
+   text-decoration:none; 
+   cursor:pointer;  
+}
+.text-login{
+    color: #002f34;
+    border-bottom: 2px solid #002f34;
+    padding: 0;
+    height: auto;
+    margin-right: 30px;
+    font-size: 16px;
+}
+a ion-icon{
+  width: 30px;
+  height: 30px;
+}
+.category-section{
+  margin-top: 60px;
+}
+.card{
+  cursor: pointer;
+}
+.card-img{
+  width: 100%;
+  height: 150px;
+}
