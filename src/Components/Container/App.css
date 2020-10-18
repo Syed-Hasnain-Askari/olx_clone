@@ -132,6 +132,9 @@ a ion-icon{
   cursor: pointer;
 }
 .card-img{
-  width: 100%;
-  height: 150px;
+ height: 180px;
+}
+.avatar{
+  width: 68px;
+  height: 68px;
 }

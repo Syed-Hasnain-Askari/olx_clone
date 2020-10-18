@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
-import AppRoute from './Components/congif/router'
-
+import React, { Component } from 'react';
+import AppRoute from './Components/congif/router';
+import Category from './Components/Container/Category';
 class App extends Component {
     render() {
         return (
-            <AppRoute></AppRoute>
+            <div>
+            <AppRoute></AppRoute>,
+            </div>
         )
     }
 }

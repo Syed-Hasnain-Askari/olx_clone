@@ -1,6 +1,7 @@
 import React from 'react';
 import banner from './images/olx0.png';
-function Category() {
+import previwebanner from './images/previewbanner.png'
+function Category(props) {
     return (
       <div className="category-section">
         <nav className="navbar navbar-expand-lg shadow category-navbar mt-5">
@@ -34,7 +35,6 @@ function Category() {
           </ul>
         </div>
       </nav>
-      <img src={banner} className="img-responsive d-block w-100"></img>
       </div>
       
        

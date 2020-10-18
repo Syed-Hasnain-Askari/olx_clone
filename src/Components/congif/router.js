@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Header from '../Container/Header';
-import Card from '../Container/Cards';
+import Category from '../Container/Category';
+import Products from '../Container/products';
+import Preview from '../Container/Preview'
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,7 +14,8 @@ class AppRoute extends Component{
         return(
             <Router>
                 <Route exact path='/' component={Header}></Route>
-                <Route path='/Card' component={Card}></Route>
+                <Route exact path='/' component={Products}></Route>
+                <Route path='/Preview/:id' component={Preview}></Route>
             </Router>
         )
     }
