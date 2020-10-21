@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
-import Category from './Components/Container/Category';
-import Products from './Components/Container/products'
+import Header from './Components/Container/Header'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

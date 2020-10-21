@@ -1,10 +1,28 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Header from './Header';
+import {AiOutlineHeart} from "react-icons/ai";
+import { BiHeart } from "react-icons/bi";
+import {MdFavorite, MdLocationSearching} from "react-icons/md"
+import {IoMdHeartEmpty} from "react-icons/io"
 import avatar from './images/avatar.png';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Data from '../../Data.json';
 
-export default function Preview(props) {
+export default function Preview() {
+    const [color, setColors] = React.useState("grey");
+    const [active, setActive] = React.useState(false);
+    const [UserData, setUserdata] = React.useState({});
+    const handleClickButton = () => {
+        if (active === false) {
+            setActive(true);
+            setColors("black");
+          }
+        setUserdata(
+            localStorage.setItem("Data",JSON.stringify(data))
+        )
+      };
+      
     const { id } = useParams()
     const data = Data[id]
     if (!data) {
@@ -29,7 +47,7 @@ export default function Preview(props) {
 
                                 <div>
                                     <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
-                                    <a className="icons mr-3 "><ion-icon name="heart-outline"></ion-icon></a>
+                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite" onClick={()=> handleClickButton()} ><MdFavorite size={26} color={color}></MdFavorite></a>
                                 </div>
 
                             </div>
