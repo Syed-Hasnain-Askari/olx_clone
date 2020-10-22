@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from '../Container/Header';
 import Products from '../Container/products';
 import Preview from '../Container/Preview'
-import Addfavorite from '../Container/FavList'
+import FavList from '../Container/FavList'
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,7 +16,7 @@ class AppRoute extends Component{
                 <Route exact path='/' component={Header}></Route>
                 <Route exact path='/' component={Products}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
-                <Route path='/FavList' component={Addfavorite}></Route>
+                <Route path='/FavList' component={FavList}></Route>
             </Router>
         )
     }

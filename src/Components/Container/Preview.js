@@ -1,9 +1,6 @@
 import React,{useState} from 'react';
 import Header from './Header';
-import {AiOutlineHeart} from "react-icons/ai";
-import { BiHeart } from "react-icons/bi";
-import {MdFavorite, MdLocationSearching} from "react-icons/md"
-import {IoMdHeartEmpty} from "react-icons/io"
+import {MdFavorite} from "react-icons/md"
 import avatar from './images/avatar.png';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -18,12 +15,19 @@ export default function Preview() {
             setActive(true);
             setColors("black");
           }
+        // read what the Product value currently is  
+        var products = JSON.parse(localStorage.getItem('Data') || '[]')
+        // Push the values in products varable
+        products.push(data)
         setUserdata(
-            localStorage.setItem("Data",JSON.stringify(data))
+            // set the products values in String from
+            localStorage.setItem("Data",JSON.stringify(products))
+            
         )
       };
-      
+    // get Id from the Object.key function 
     const { id } = useParams()
+    // Retive Data from Data.Json file base on thier ID
     const data = Data[id]
     if (!data) {
         return <h1>Not Found</h1>
@@ -47,7 +51,7 @@ export default function Preview() {
 
                                 <div>
                                     <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
-                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite" onClick={()=> handleClickButton()} ><MdFavorite size={26} color={color}></MdFavorite></a>
+                                    <Link to={"/FavList"}><a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite" onClick={()=> handleClickButton()} ><MdFavorite size={26} color={color}></MdFavorite></a></Link>
                                 </div>
 
                             </div>

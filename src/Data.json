@@ -20,7 +20,7 @@
             "price":"10,000",
             "location":"Karachi",
             "date":"today",
-            "image":"/images/camera.jpg"
+            "image":"/images/camera1.png"
 
         },
         "product3":
@@ -31,7 +31,7 @@
             "price":"10,000",
             "location":"Karachi",
             "date":"today",
-            "image":"/images/bicycle.jpg"
+            "image":"/images/bicycle1.png"
 
         },
         "product4":
