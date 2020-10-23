@@ -51,7 +51,7 @@ export default function Preview() {
 
                                 <div>
                                     <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
-                                    <Link to={"/FavList"}><a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite" onClick={()=> handleClickButton()} ><MdFavorite size={26} color={color}></MdFavorite></a></Link>
+                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite" onClick={()=> handleClickButton()} ><MdFavorite size={26} color={color}></MdFavorite></a>
                                 </div>
 
                             </div>
