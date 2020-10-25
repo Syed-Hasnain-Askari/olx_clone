@@ -33,8 +33,8 @@ export default class FavList extends Component {
 
                     </div>
                     <div className="row">
-                    {this.documentData.map(element=>{
-                return(
+                    {this.documentData.map(element=>(
+                
                 <div className="col-md-4">
                     <div className="card w-100 card-product mt-3 shadow">
                         <div className="d-flex justify-content-between mt-2 ml-2 mr-2">
@@ -63,8 +63,8 @@ export default class FavList extends Component {
                     </div>
                 </div>
             
-            )
-            })}
+            
+                    ))}
                     </div>
                     
                 </div>
