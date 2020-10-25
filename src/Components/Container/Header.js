@@ -41,7 +41,7 @@ class Header extends Component {
 
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <div className="list-group">
-                                            <a href="#" className="list-group-item list-group-item-action pt-0 ">
+                                            <a href="#" className="list-group-item pt-0 text-decoration-none">
                                                 <div className="d-flex w-100 h-25 pt-3">
                                                    
                                                     <MdMyLocation size={30}></MdMyLocation>
@@ -51,7 +51,7 @@ class Header extends Component {
                                                 </div>
                                                <div><p className="ml-5 text-primary">location blocked. Check browser/phone settings.</p></div>
                                             </a>
-                                            <a href="#" className="list-group-item list-group-item-action ">
+                                            <a href="#" className="list-group-item text-decoration-none ">
                                                 <p className="text-muted font-weight-normal ">POPULAR LOCATION</p>
                                                 <div className="d-flex w-100 h-25 mt-3 pt-3">
                                                     <HiOutlineLocationMarker  size={30}></HiOutlineLocationMarker>
@@ -87,8 +87,8 @@ class Header extends Component {
                             </li>
                             <li className="input-group nav-item-find">
                                 <input type="text" placeholder="Find Cars,Mobile Phones and more..." className="form-control find" aria-label="Username" aria-describedby="basic-addon1"></input>
-                                <div class="input-group-prepand">
-                                    <span class="input-group-text search-icon" id="basic-addon1"><ion-icon name="search"></ion-icon></span>
+                                <div className="input-group-prepand">
+                                    <span className="input-group-text search-icon" id="basic-addon1"><ion-icon name="search"></ion-icon></span>
                                 </div>
                             </li>
                         </ul>
