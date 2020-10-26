@@ -3,7 +3,6 @@ import Header from '../Container/Header';
 import Products from '../Container/products';
 import Preview from '../Container/Preview';
 import FavList from '../Container/FavList';
-import Error from '../Container/Error';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,7 +17,6 @@ class AppRoute extends Component{
                 <Route exact path='/' component={Products}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
                 <Route path='/FavList' component={FavList}></Route>
-                <Route path='/Error' component={Error}></Route>
             </Router>
         )
     }

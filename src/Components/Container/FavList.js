@@ -5,7 +5,6 @@ import {MdFavorite} from "react-icons/md"
 export default class FavList extends Component {
     render() {
         this.documentData = JSON.parse(localStorage.getItem('Data'))    
-      
         const RemoveItems = () =>{
                 var productItem = JSON.parse(localStorage.getItem('Data'));
                 var index = productItem.map(function(element) {

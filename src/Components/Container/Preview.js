@@ -3,67 +3,34 @@ import Header from './Header';
 import { MdFavorite } from "react-icons/md"
 import avatar from './images/avatar.png';
 import { useParams } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
 import Data from '../../Data.json';
 
 export default function Preview() {
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
     const [UserData, setUserdata] = useState({});
-    // let history = useHistory();
+    const onClickhandler = ()=>{
+        if(active!=true){
+            setActive(true);
+            setColors("red");
+            console.log("hey")
+        }
 
+        if (active === true) {
+            setActive(false);
+            setColors("#333");
+            console.log("bye")
+
+        }
+    }
     // get Id from the Object.key function 
     const { id } = useParams()
     // Retive Data from Data.Json file base on thier ID
     const data = Data[id]
-    console.log(data)
     if (!data) {
         return <h1>Not Found</h1>
     }
-    if (typeof (localStorage.getItem("Data")) == null) {
-        console.log("null")
-    }
-    else {
-        console.group("Full")
-    }
-    // read what the Product value currently is  
-    // var products = JSON.parse(localStorage.getItem('Data') || '[]')
-
-    var products = JSON.parse(localStorage.getItem('Data') || '[]')
-
-    const RemoveItems = () => {
-        var productItem = JSON.parse(localStorage.getItem('Data'));
-        var index = productItem.map(function (element) {
-            return element.id;
-        }).indexOf(products.id);
-        productItem.splice(index, 1);
-        localStorage.setItem('Data', JSON.stringify(productItem));
-
-    }
-    
-    const handleClickButton = () => {
-        setActive(true);
-        setColors("red");
-
-        // Push the values in products varable
-        products.push(data)
-        setUserdata(
-
-            // set the products values in String from
-            localStorage.setItem("Data", JSON.stringify(products))
-
-        )
-        if (active === true) {
-            setActive(false);
-            setColors("#333");
-            RemoveItems()
-
-        }
-        // else if(active!=true){
-        //        RemoveItems()
-        //        setColors("#333");
-        // }
-    };
+   
     return (
         <div>
             <Header />
@@ -83,7 +50,7 @@ export default function Preview() {
 
                                 <div>
                                     <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
-                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite" onClick={() => handleClickButton()} ><MdFavorite size={26} color={color}></MdFavorite></a>
+                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite"><MdFavorite size={26} color={color} onClick={()=>onClickhandler()}></MdFavorite></a>
                                 </div>
 
                             </div>

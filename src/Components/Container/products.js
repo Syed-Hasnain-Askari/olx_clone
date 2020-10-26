@@ -5,6 +5,7 @@ import Data from '../../Data.json';
 const Cards = (props) => {
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
+   
     const handleClickButton = () => {
         setActive(true);
         setColors("red");
@@ -17,7 +18,7 @@ const Cards = (props) => {
     return (
         <div className="col-lg-3 col-md-4 col-sm-6">
 
-            <div className="card w-100 card-product mt-3 shadow" key={props.key}>
+            <div className="card w-100 card-product mt-3 shadow">
                 <div className="d-flex justify-content-between mt-2 ml-2 mr-2">
                     <div><p className=" badge badge-warning">Feature</p></div>
                     <div><a className="icons" onClick={() => handleClickButton()}><MdFavorite size={26} color={color}></MdFavorite></a></div>
@@ -54,7 +55,6 @@ const Product = () => {
                 {Object.keys(data).map((product) => (
                     <Cards
                         name={product}
-                        key={data[product]}
                         id={data[product].id}
                         image={data[product].image}
                         title={data[product].title}
