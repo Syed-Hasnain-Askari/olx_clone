@@ -3,9 +3,20 @@ import Header from './Header';
 import {MdFavorite} from "react-icons/md"
 
 export default class FavList extends Component {
+    constructor(){
+        super()
+        this.state = {
+            active:false,
+            color:"red",
+        }
+    }
     render() {
         this.documentData = JSON.parse(localStorage.getItem('Data'))    
         const RemoveItems = () =>{
+            this.setState({
+                avtive:true,
+                color:"black"
+            })
                 var productItem = JSON.parse(localStorage.getItem('Data'));
                 var index = productItem.map(function(element) {
                 return element.id;
@@ -38,7 +49,7 @@ export default class FavList extends Component {
                     <div className="card w-100 card-product mt-3 shadow">
                         <div className="d-flex justify-content-between mt-2 ml-2 mr-2">
                             <div><p className=" badge badge-warning">Feature</p></div>
-                            <div><a className="icons" onClick={() => RemoveItems()} ><MdFavorite name="heart-outline" size={26} value={this.state.documentData}></MdFavorite></a></div>
+                            <div><a className="icons" onClick={() => RemoveItems()} ><MdFavorite name="heart-outline" size={26} value={this.state.documentData} color={this.state.color}></MdFavorite></a></div>
                         </div>
                         <div className="row justify-content-center mx-auto">
                             <img src={element.image} alt={element.title} className="card-img-top card-img"></img>

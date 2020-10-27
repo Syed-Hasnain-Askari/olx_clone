@@ -8,18 +8,7 @@ import './App.css';
 import Category from './Category';
 
 class Header extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            sign: false,
-            login: false,
-
-        }
-    }
-
     render() {
-        const { login, sign } = this.state;
         return (
             <React.Fragment>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top top-navbar">
@@ -93,8 +82,8 @@ class Header extends Component {
                             </li>
                         </ul>
 
-                        <button className="text-login" href="#" onClick={this.onOpenModalLogin}>login</button>
-                        <button className="btn btn-outline-success my-2 my-sm-0 mr-5" onClick={this.onOpenModal} type="submit">SignUp</button>
+                        <a href="#" className="active">login</a>
+                        <button className="btn btn-outline-success my-2 my-sm-0 mr-5"type="submit">SignUp</button>
 
                     </div>
                 </nav>
@@ -102,7 +91,7 @@ class Header extends Component {
                 <img src={previewbanner} className="img-fluid d-block w-100"></img>
                 {/* Sign up model */}
 
-                <Modal open={sign} onClose={this.onCloseModal}>
+                {/* <Modal open={sign} onClose={this.onCloseModal}>
                     <div className="modal-body">
                         <h2>Get Started Absolutely<span> Free!</span></h2>
                         <span className="subtitle">No credit card needed</span>
@@ -124,7 +113,7 @@ class Header extends Component {
                 {/* <!-- signUp End -->
                   <!-- login --> */}
 
-                <Modal open={login} onClose={this.onCloseModalclose}>
+                {/* <Modal open={login} onClose={this.onCloseModalclose}>
 
                     <div className="modal-body">
                         <h2>Login and Get <span>Started</span></h2>
@@ -139,7 +128,7 @@ class Header extends Component {
                             <input className="btn btn-md btn-primary btn-center" id="login_btn" type="button" value="Login" />
                         </form>
                     </div>
-                </Modal>
+                </Modal> */} 
             </React.Fragment>
         )
 

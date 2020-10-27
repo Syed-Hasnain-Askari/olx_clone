@@ -5,13 +5,30 @@ import Data from '../../Data.json';
 const Cards = (props) => {
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
+    const [UserData, setUserdata] = useState(Data);;
+
+    var products = JSON.parse(localStorage.getItem('Data') || '[]')
    
     const handleClickButton = () => {
         setActive(true);
         setColors("red");
-        if (active === true) {
+        if (active != true) {
+            setActive(true);
+            setColors("red");
+
+            // Push the values in products varable
+            products.push(UserData)
+            setUserdata(
+
+                // set the products values in String from
+                localStorage.setItem("Data", JSON.stringify(products))
+            )
+        }
+        if (active == true) {
             setActive(false);
             setColors("#333");
+            console.log("bye")
+
         }
     };
 
@@ -54,6 +71,7 @@ const Product = () => {
             <div className="row">
                 {Object.keys(data).map((product) => (
                     <Cards
+                        data={data}
                         name={product}
                         id={data[product].id}
                         image={data[product].image}

@@ -8,15 +8,11 @@ import Data from '../../Data.json';
 export default function Preview() {
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
-    const [UserData, setUserdata] = useState(Data);
+    const [UserData, setUserdata] = useState([Data]);
 
 
     var products = JSON.parse(localStorage.getItem('Data') || '[]')
-
     const onClickhandler = () => {
-        console.log(
-            UserData
-        )
         if (active != true) {
             setActive(true);
             setColors("red");
@@ -32,9 +28,17 @@ export default function Preview() {
         if (active == true) {
             setActive(false);
             setColors("#333");
-            console.log("bye")
+            RemoveItems()
 
         }
+    }
+    const RemoveItems = () =>{
+        var productItem = JSON.parse(localStorage.getItem('Data'));
+        var index = productItem.map(function(element) {
+        return element.id;
+        }).indexOf(data.id);
+        productItem.splice(index, 1);
+        localStorage.setItem('Data', JSON.stringify(productItem));
     }
     // get Id from the Object.key function 
     const { id } = useParams()
