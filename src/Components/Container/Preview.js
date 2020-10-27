@@ -8,15 +8,28 @@ import Data from '../../Data.json';
 export default function Preview() {
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
-    const [UserData, setUserdata] = useState({});
-    const onClickhandler = ()=>{
-        if(active!=true){
+    const [UserData, setUserdata] = useState(Data);
+
+
+    var products = JSON.parse(localStorage.getItem('Data') || '[]')
+
+    const onClickhandler = () => {
+        console.log(
+            UserData
+        )
+        if (active != true) {
             setActive(true);
             setColors("red");
-            console.log("hey")
-        }
 
-        if (active === true) {
+            // Push the values in products varable
+            products.push(data)
+            setUserdata(
+
+                // set the products values in String from
+                localStorage.setItem("Data", JSON.stringify(products))
+            )
+        }
+        if (active == true) {
             setActive(false);
             setColors("#333");
             console.log("bye")
@@ -30,7 +43,6 @@ export default function Preview() {
     if (!data) {
         return <h1>Not Found</h1>
     }
-   
     return (
         <div>
             <Header />
@@ -50,7 +62,7 @@ export default function Preview() {
 
                                 <div>
                                     <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
-                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite"><MdFavorite size={26} color={color} onClick={()=>onClickhandler()}></MdFavorite></a>
+                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite"><MdFavorite size={26} color={color} onClick={() => onClickhandler()}></MdFavorite></a>
                                 </div>
 
                             </div>
