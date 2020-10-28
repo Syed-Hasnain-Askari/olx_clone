@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MdFavorite } from "react-icons/md"
+import { MdFavorite } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import Data from '../../Data.json';
 const Cards = (props) => {
@@ -7,7 +7,7 @@ const Cards = (props) => {
     const [active, setActive] = useState(false);
     const [UserData, setUserdata] = useState(Data);;
 
-    var products = JSON.parse(localStorage.getItem('Data') || '[]')
+    // var products = JSON.parse(localStorage.getItem('Data') || '[]')
    
     const handleClickButton = () => {
         setActive(true);
@@ -16,13 +16,13 @@ const Cards = (props) => {
             setActive(true);
             setColors("red");
 
-            // Push the values in products varable
-            products.push(UserData)
-            setUserdata(
+            // // Push the values in products varable
+            // products.push(UserData)
+            // setUserdata(
 
-                // set the products values in String from
-                localStorage.setItem("Data", JSON.stringify(products))
-            )
+            //     // set the products values in String from
+            //     localStorage.setItem("Data", JSON.stringify(products))
+            // )
         }
         if (active == true) {
             setActive(false);
@@ -83,6 +83,7 @@ const Product = () => {
 
                 ))}
             </div>
+
         </div>
     )
 }

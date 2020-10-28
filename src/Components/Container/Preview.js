@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from './Header';
+import Category from './Category'
 import { MdFavorite } from "react-icons/md"
 import avatar from './images/avatar.png';
 import { useParams } from 'react-router-dom';

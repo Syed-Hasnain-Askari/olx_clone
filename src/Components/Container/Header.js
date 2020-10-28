@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import logo from './images/logo.webp';
-import {MdMyLocation} from "react-icons/md";
-import {HiOutlineLocationMarker} from 'react-icons/hi';
-import Modal from "react-responsive-modal";
+import { MdMyLocation } from "react-icons/md";
+import { HiOutlineLocationMarker } from 'react-icons/hi';
+import Modal from 'react-awesome-modal';
+import { auth } from "../../firebase"
+import { signInWithGoogle } from '../../firebase'
 import previewbanner from './images/previewbanner.png'
 import './App.css';
 import Category from './Category';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false
+        }
+    }
+
+    openModal() {
+        this.setState({
+            visible: true
+        });
+    }
+
+    closeModal() {
+        this.setState({
+            visible: false
+        });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -24,7 +45,8 @@ class Header extends Component {
                                 <div className="input-icons dropdown">
                                     <ion-icon name="search"></ion-icon>
                                     <button className="btn location" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Lahore<span className="chevron-down"><ion-icon name="chevron-down"></ion-icon></span>
+                                        Punjab
+                                    <span className="chevron-down"><ion-icon name="chevron-down"></ion-icon></span>
                                     </button>
                                     {/* <span className="chevron-down"><ion-icon name="chevron-down"></ion-icon></span> */}
 
@@ -32,43 +54,43 @@ class Header extends Component {
                                         <div className="list-group">
                                             <a href="#" className="list-group-item pt-0 text-decoration-none">
                                                 <div className="d-flex w-100 h-25 pt-3">
-                                                   
+
                                                     <MdMyLocation size={30}></MdMyLocation>
-                                                
+
                                                     <h5 className="mb-1 ml-3 text-primary">Use Current Location</h5>
-                           
+
                                                 </div>
-                                               <div><p className="ml-5 text-primary">location blocked. Check browser/phone settings.</p></div>
+                                                <div><p className="ml-5 text-primary">location blocked. Check browser/phone settings.</p></div>
                                             </a>
                                             <a href="#" className="list-group-item text-decoration-none ">
                                                 <p className="text-muted font-weight-normal ">POPULAR LOCATION</p>
                                                 <div className="d-flex w-100 h-25 mt-3 pt-3">
-                                                    <HiOutlineLocationMarker  size={30}></HiOutlineLocationMarker>
+                                                    <HiOutlineLocationMarker size={30}></HiOutlineLocationMarker>
                                                     <p className="mb-1 ml-3 font-weight-normal font-weight-lighter">Punjab</p>
-                                                    
-                           
+
+
                                                 </div>
                                                 <div className="d-flex w-100 h-25 mt-3 pt-3">
-                                                    <HiOutlineLocationMarker  size={30}></HiOutlineLocationMarker>
+                                                    <HiOutlineLocationMarker size={30}></HiOutlineLocationMarker>
                                                     <p className="mb-1 ml-3">IslamabadnCapital Territory</p>
-                                                    
-                           
+
+
                                                 </div>
                                                 <div className="d-flex w-100 h-25 mt-3 pt-3">
-                                                    <HiOutlineLocationMarker  size={30}></HiOutlineLocationMarker>
+                                                    <HiOutlineLocationMarker size={30}></HiOutlineLocationMarker>
                                                     <p className="mb-1 ml-3">Sindh</p>
-                                                    
-                           
+
+
                                                 </div>
                                                 <div className="d-flex w-100 h-25 mt-3 pt-3">
-                                                    <HiOutlineLocationMarker  size={30}></HiOutlineLocationMarker>
+                                                    <HiOutlineLocationMarker size={30}></HiOutlineLocationMarker>
                                                     <p className="mb-1 ml-3">Khybar Pakhtunkhwa</p>
-                                                    
-                           
+
+
                                                 </div>
-                                              
+
                                             </a>
-                                         
+
                                         </div>
                                     </div>
 
@@ -82,53 +104,48 @@ class Header extends Component {
                             </li>
                         </ul>
 
-                        <a href="#" className="active">login</a>
-                        <button className="btn btn-outline-success my-2 my-sm-0 mr-5"type="submit">SignUp</button>
+                        <label className="active" onClick={() => this.openModal()}>login</label>
+                        <button className="btn btn-outline-success my-2 my-sm-0 mr-5" type="submit">SignUp</button>
 
                     </div>
+                    {/* <Modal
+                        visible={this.state.visible}
+                        width="400"
+                        height="584"
+                        effect="fadeInUp"
+                        onClickAway={() => this.closeModal()}
+                    >
+                        <div className="mt-5 p-3 popup_wrapper">
+
+
+                            <div className="row mx-auto mb-2">
+
+                                <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
+
+                            </div>
+
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button ">Continue with facebook</button>
+                                
+                            </div>
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()}>Continue with google</button>
+                                
+                            </div>
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button">Continue with email</button>
+                                
+                            </div>
+
+                            <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                        </div>
+                    </Modal> */}
                 </nav>
                 <Category></Category>
                 <img src={previewbanner} className="img-fluid d-block w-100"></img>
-                {/* Sign up model */}
-
-                {/* <Modal open={sign} onClose={this.onCloseModal}>
-                    <div className="modal-body">
-                        <h2>Get Started Absolutely<span> Free!</span></h2>
-                        <span className="subtitle">No credit card needed</span>
-                        <form className="contact-form form-validate3" novalidate="novalidate">
-                            <div className="form-group">
-                                <input className="form-control" type="text" name="name" id="name" placeholder="First Name" required="" autocomplete="off" aria-required="true" />
-                            </div>
-                            <div className="form-group">
-                                <input className="form-control" type="email" name="email" placeholder="E-mail" required="" autocomplete="off" aria-required="true" />
-                            </div>
-                            <div className="form-group">
-                                <input type="password" name="pass" className="form-control" placeholder="Password" required="" autocomplete="off" aria-required="true" />
-                            </div>
-                            <input className="btn btn-md btn-primary btn-center" id="sign_up" type="button" value="Sign Up" />
-                        </form>
-                    </div>
-                </Modal>
-
-                {/* <!-- signUp End -->
-                  <!-- login --> */}
-
-                {/* <Modal open={login} onClose={this.onCloseModalclose}>
-
-                    <div className="modal-body">
-                        <h2>Login and Get <span>Started</span></h2>
-                        <span className="subtitle">Just fill in the form below</span>
-                        <form className="contact-form form-validate4" novalidate="novalidate">
-                            <div className="form-group">
-                                <input className="form-control" type="email" name="email" placeholder="E-mail" required="" autocomplete="off" aria-required="true" />
-                            </div>
-                            <div className="form-group">
-                                <input type="password" name="pass" className="form-control" placeholder="Password" required="" autocomplete="off" aria-required="true" />
-                            </div>
-                            <input className="btn btn-md btn-primary btn-center" id="login_btn" type="button" value="Login" />
-                        </form>
-                    </div>
-                </Modal> */} 
             </React.Fragment>
         )
 

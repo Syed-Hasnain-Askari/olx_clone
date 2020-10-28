@@ -128,8 +128,44 @@ a ion-icon{
 .category-section{
   margin-top: 60px;
 }
+.category-section a{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+.category-section .navbar-brand{
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  color: #002f34;
+}
+.popup_wrapper{
+  margin: 0 16px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+.popup-button{
+  color: #002f34;
+  border-radius: 4px;
+  border: 2px solid #002f34;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1.15;
+  font-family: 'Roboto', sans-serif;
+}
 .card{
   cursor: pointer;
+}
+.card-title{
+  font-family: 'Roboto', sans-serif;
+  color: #002f34;
+  font-size: 20px;
+  font-weight: 700;
+}
+.card-subtitle{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: rgba(0,47,52,.64);
 }
 .card-img{
  height: 180px;
