@@ -1,19 +1,20 @@
-import React, { Component } from "react";
+import React, {useContext } from "react";
 import Header from '../Container/Header';
 import Products from '../Container/products';
 import Preview from '../Container/Preview';
 import FavList from '../Container/FavList';
+import Error from '../Container/Error'
 import Main from '../Container/Main'
-import firebase from "firebase/app";
+import { UserContext } from "../../provider/Userprovider";
 import "firebase/auth";
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
 } from "react-router-dom";
-class AppRoute extends Component{
-    render(){
-        const user = null;
+function AppRoute(){
+    
+        const user = useContext(UserContext);
         return(
             user ?
             <Main />
@@ -26,6 +27,5 @@ class AppRoute extends Component{
                 <Route path='/FavList' component={FavList}></Route>
             </Router>
         )
-    }
 }
 export default AppRoute

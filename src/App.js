@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import AppRoute from './Components/congif/router';
-import UserContext from './provider/Userprovider';
+import UserProvider from "./provider/Userprovider"
 import "firebase/auth";
-class App extends Component {
-    render() {
+function App()  {
+   
         return (
             <div>
-            <UserContext>
+            <UserProvider>
             <AppRoute/>    
-            </UserContext>   
+            </UserProvider>   
             </div>
+        
         )
-    }
 }
 export default App
