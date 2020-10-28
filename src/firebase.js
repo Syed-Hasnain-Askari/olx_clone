@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { Redirect, withRouter } from 'react-router-dom'
 
 const firebaseConfig = {
     apiKey: "AIzaSyD7uc7-U-2lHS_xMd5tAnX2VwqOUCIn5aU",
@@ -16,9 +17,9 @@ const firebaseConfig = {
   const provider = new firebase.auth.GoogleAuthProvider();
 
   export const signInWithGoogle = () => {
-    auth.signInWithPopup(provider);
-    console.log("Successful");
+    auth.signInWithRedirect(provider);
   };
+ 
   
   firebase.initializeApp(firebaseConfig);
   export const auth = firebase.auth();

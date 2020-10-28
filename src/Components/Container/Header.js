@@ -3,6 +3,8 @@ import logo from './images/logo.webp';
 import { MdMyLocation } from "react-icons/md";
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import Modal from 'react-awesome-modal';
+import { withRouter } from 'react-router-dom'
+import firebase from "firebase/app";
 import { auth } from "../../firebase"
 import { signInWithGoogle } from '../../firebase'
 import previewbanner from './images/previewbanner.png'
@@ -11,27 +13,68 @@ import Category from './Category';
 
 class Header extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            visible: false
-        }
+            visible : false,
+            isLoggedIn: null,
+        };
     }
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) { this.setState({ isLoggedIn: true })} 
+          else { this.setState({ isLoggedIn: false })}
+        })
+      }
 
     openModal() {
         this.setState({
-            visible: true
+            visible : true
         });
     }
 
     closeModal() {
         this.setState({
-            visible: false
+            visible : false
         });
     }
-
     render() {
         return (
             <React.Fragment>
+                  <Modal
+                        visible={this.state.visible}
+                        width="400"
+                        height="584"
+                        effect="fadeInUp"
+                        onClickAway={() => this.closeModal()}
+                    >
+                        <div className="mt-5 p-3 popup_wrapper">
+
+
+                            <div className="row mx-auto mb-2">
+
+                                <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
+
+                            </div>
+
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button ">Continue with facebook</button>
+                                
+                            </div>
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()} >Continue with google</button>
+                                
+                            </div>
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button">Continue with email</button>
+                                
+                            </div>
+
+                            <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                        </div>
+                    </Modal>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top top-navbar">
                     <a className="navbar-brand" href="#">
                         <img src={logo} className="img-thumbnil logo"></img>
@@ -108,41 +151,6 @@ class Header extends Component {
                         <button className="btn btn-outline-success my-2 my-sm-0 mr-5" type="submit">SignUp</button>
 
                     </div>
-                    {/* <Modal
-                        visible={this.state.visible}
-                        width="400"
-                        height="584"
-                        effect="fadeInUp"
-                        onClickAway={() => this.closeModal()}
-                    >
-                        <div className="mt-5 p-3 popup_wrapper">
-
-
-                            <div className="row mx-auto mb-2">
-
-                                <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
-
-                            </div>
-
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button ">Continue with facebook</button>
-                                
-                            </div>
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()}>Continue with google</button>
-                                
-                            </div>
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button">Continue with email</button>
-                                
-                            </div>
-
-                            <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
-                        </div>
-                    </Modal> */}
                 </nav>
                 <Category></Category>
                 <img src={previewbanner} className="img-fluid d-block w-100"></img>
