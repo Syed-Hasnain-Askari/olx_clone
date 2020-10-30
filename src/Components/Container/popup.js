@@ -49,7 +49,7 @@ export default class Model extends Component {
                             </div>
                             <div className="row mx-auto mb-2">
                                 
-                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()}>Continue with google</button>
+                                <button className="btn btn-lg btn-block btn-outline popup-button">Continue with google</button>
                                 
                             </div>
                             <div className="row mx-auto mb-2">

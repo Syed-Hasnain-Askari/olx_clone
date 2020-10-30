@@ -1,51 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState} from 'react';
 import logo from './images/logo.webp';
 import { MdMyLocation } from "react-icons/md";
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import Modal from 'react-awesome-modal';
-import { withRouter } from 'react-router-dom'
 import firebase from "firebase/app";
 import { auth } from "../../firebase"
 import { signInWithGoogle } from '../../firebase'
 import previewbanner from './images/previewbanner.png'
+import { UserContext } from "../../provider/Userprovider";
 import './App.css';
 import Category from './Category';
 
-class Header extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            visible : false,
-            isLoggedIn: null,
-        };
-    }
-    componentDidMount() {
-        firebase.auth().onAuthStateChanged(user => {
-          if (user) { this.setState({ isLoggedIn: true })} 
-          else { this.setState({ isLoggedIn: false })}
-        })
-      }
+ const Header = (props)=>{
+         const [visible,setVisible] = useState(false);
+         const [isLoggedIn,setIsLoggedIn] = useState(null);
+    // componentDidMount() {
+    //     firebase.auth().onAuthStateChanged(user => {
+    //       if (user) { this.setState({ isLoggedIn: true })} 
+    //       else { this.setState({ isLoggedIn: false })}
+    //     })
+    //   }
 
-    openModal() {
-        this.setState({
-            visible : true
-        });
+
+    const openModal = ()=> {
+       setVisible(true)
     }
 
-    closeModal() {
-        this.setState({
-            visible : false
-        });
+    const closeModal = ()=> {
+        setVisible(false)
     }
-    render() {
-        return (
-            <React.Fragment>
+
+    return (
+            <>
                   <Modal
-                        visible={this.state.visible}
+                        visible={visible}
                         width="400"
                         height="584"
                         effect="fadeInUp"
-                        onClickAway={() => this.closeModal()}
+                        onClickAway={() =>closeModal()}
                     >
                         <div className="mt-5 p-3 popup_wrapper">
 
@@ -72,7 +64,7 @@ class Header extends Component {
                                 
                             </div>
 
-                            <a href="javascript:void(0);" onClick={() => this.closeModal()}>Close</a>
+                            <a href="javascript:void(0);" onClick={() =>closeModal()}>Close</a>
                         </div>
                     </Modal>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top top-navbar">
@@ -147,17 +139,16 @@ class Header extends Component {
                             </li>
                         </ul>
 
-                        <label className="active" onClick={() => this.openModal()}>login</label>
+                        <label className="active" onClick={() =>openModal()}>login</label>
                         <button className="btn btn-outline-success my-2 my-sm-0 mr-5" type="submit">SignUp</button>
 
                     </div>
                 </nav>
                 <Category></Category>
                 <img src={previewbanner} className="img-fluid d-block w-100"></img>
-            </React.Fragment>
+            </>
         )
 
-    }
 }
 
 export default Header

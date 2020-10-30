@@ -11,16 +11,18 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
+  Switch,
 } from "react-router-dom";
 function AppRoute(){
     
         const user = useContext(UserContext);
         return(
             user ?
-            <Main />
-          :
+               <Router>
+                  <Main/> 
+               </Router>                
+           :
             <Router>
-               
                 <Route exact path='/' component={Header}></Route>
                 <Route exact path='/' component={Products}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
