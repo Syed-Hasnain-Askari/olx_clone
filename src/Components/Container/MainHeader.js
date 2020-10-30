@@ -1,72 +1,18 @@
-import React, { useState} from 'react';
+import React from 'react';
 import logo from './images/logo.webp';
+import avatar from './images/avatar1.png'
+import previewbanner from './images/previewbanner.png';
 import { MdMyLocation } from "react-icons/md";
 import { HiOutlineLocationMarker } from 'react-icons/hi';
-import Modal from 'react-awesome-modal';
-import firebase from "firebase/app";
-import { auth } from "../../firebase"
-import { signInWithGoogle } from '../../firebase'
-import previewbanner from './images/previewbanner.png'
-import { UserContext } from "../../provider/Userprovider";
-import './App.css';
+import {FaRegBell} from 'react-icons/fa';
+import {BsChat} from 'react-icons/bs';
 import Category from './Category';
+import './App.css';
 
- const Header = (props)=>{
-         const [visible,setVisible] = useState(false);
-         const [isLoggedIn,setIsLoggedIn] = useState(null);
-    // componentDidMount() {
-    //     firebase.auth().onAuthStateChanged(user => {
-    //       if (user) { this.setState({ isLoggedIn: true })} 
-    //       else { this.setState({ isLoggedIn: false })}
-    //     })
-    //   }
-
-
-    const openModal = ()=> {
-       setVisible(true)
-    }
-
-    const closeModal = ()=> {
-        setVisible(false)
-    }
-
+export default function MainHeader() {
     return (
-            <>
-                  <Modal
-                        visible={visible}
-                        width="400"
-                        height="584"
-                        effect="fadeInUp"
-                        onClickAway={() =>closeModal()}
-                    >
-                        <div className="mt-5 p-3 popup_wrapper">
-
-
-                            <div className="row mx-auto mb-2">
-
-                                <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
-
-                            </div>
-
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button ">Continue with facebook</button>
-                                
-                            </div>
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()} >Continue with google</button>
-                                
-                            </div>
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button">Continue with email</button>
-                                
-                            </div>
-
-                            <a href="javascript:void(0);" onClick={() =>closeModal()}>Close</a>
-                        </div>
-                    </Modal>
+        <div>
+             <>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top top-navbar">
                     <a className="navbar-brand" href="#">
                         <img src={logo} className="img-thumbnil logo"></img>
@@ -137,9 +83,22 @@ import Category from './Category';
                                     <span className="input-group-text search-icon" id="basic-addon1"><ion-icon name="search"></ion-icon></span>
                                 </div>
                             </li>
+
+                            <li className="nav-item">
+                            <a className="nav-link chat-icon ml-4" href="#"><BsChat size={26}/></a>
+                            </li>
+                            
+                            <li className="nav-item ml-4">
+                            <a className="nav-link chat-icon " href="#"><FaRegBell size={26}/></a>
+                            </li>
+                            <li className="nav-item ml-4">
+                            <img className="rounded-circle user-icon" src={avatar} alt="..."></img>
+                            <span className="chevron-down"><ion-icon name="chevron-down"></ion-icon></span>
+                            </li>
+
                         </ul>
 
-                        <label className="active mr-3" onClick={() =>openModal()}>login</label>
+                        <label className="active mr-3">login</label>
                         <button className="btn btn-outline my-2 my-sm-0 mr-5 rounded-pill sell-button" type="submit">SignUp</button>
 
                     </div>
@@ -147,8 +106,6 @@ import Category from './Category';
                 <Category></Category>
                 <img src={previewbanner} className="img-fluid d-block w-100"></img>
             </>
-        )
-
+        </div>
+    )
 }
-
-export default Header

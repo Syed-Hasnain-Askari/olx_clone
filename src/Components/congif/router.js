@@ -3,8 +3,9 @@ import Header from '../Container/Header';
 import Products from '../Container/products';
 import Preview from '../Container/Preview';
 import FavList from '../Container/FavList';
+import Main from '../Container/Main';
 import Error from '../Container/Error'
-import Main from '../Container/Main'
+import MainHeader from '../Container/MainHeader';
 import { UserContext } from "../../provider/Userprovider";
 import "firebase/auth";
 import {
@@ -27,6 +28,8 @@ function AppRoute(){
                 <Route exact path='/' component={Products}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
                 <Route path='/FavList' component={FavList}></Route>
+                <Route path='/MainHeader' component={MainHeader}></Route>
+
             </Router>
         )
 }

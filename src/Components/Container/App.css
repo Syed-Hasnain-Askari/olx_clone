@@ -121,9 +121,31 @@ a:hover
     margin-right: 30px;
     font-size: 16px;
 }
-a ion-icon{
-  width: 30px;
-  height: 30px;
+.chat-icon{
+  margin-top: 9px;
+  border-color: black;
+}
+.user-icon{
+  margin-top: 15px;
+  width: 35px;
+  height: 35px;
+}
+.chevron-down ion-icon{
+  width: 25px;
+  height: 25px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.sell-button{
+  width:90px;
+  background-color: white;
+  border-top:5px solid #23E5DB;
+  border-left:5px solid #FFCE32;
+  border-right:5px solid yellow;
+  border-bottom:5px solid #3A77FF;
+  height:50px;color:black;
+  font-weight: bold;
+  font-size: 15px;
 }
 .category-section{
   margin-top: 60px;
