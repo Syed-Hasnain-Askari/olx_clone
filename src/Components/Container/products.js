@@ -111,35 +111,6 @@ const Cards = (props) => {
         )};
     return (
         <div className="col-lg-3 col-md-4 col-sm-6">
-              {/* <Modal visible={visible} width="400" height="584" effect="fadeInUp" onClickAway={() => closeModal()}>
-                        <div className="mt-5 p-3 popup_wrapper">
-
-
-                            <div className="row mx-auto mb-2">
-
-                                <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
-
-                            </div>
-
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button ">Continue with facebook</button>
-                                
-                            </div>
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()}>Continue with google</button>
-                                
-                            </div>
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button">Continue with email</button>
-                                
-                            </div>
-
-                            <a href="javascript:void(0);" onClick={() => closeModal()}>Close</a>
-                        </div>
-                    </Modal> */}
             <div className="card w-100 card-product mt-3 shadow">
                 <div className="d-flex justify-content-between mt-2 ml-2 mr-2">
                     <div><p className=" badge badge-warning">Feature</p></div>

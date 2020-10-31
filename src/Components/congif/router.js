@@ -20,16 +20,22 @@ function AppRoute(){
         return(
             user ?
                <Router>
-                  <Main/> 
+                  <Main/>
+                    <Route path='/Preview/:id' component={Preview}></Route>
+                    <Route path='/FavList' component={FavList}></Route>       
                </Router>                
            :
             <Router>
                 <Route exact path='/' component={Header}></Route>
                 <Route exact path='/' component={Products}></Route>
+                <Switch>
                 <Route path='/Preview/:id' component={Preview}></Route>
                 <Route path='/FavList' component={FavList}></Route>
                 <Route path='/MainHeader' component={MainHeader}></Route>
-
+                <Route path="*">
+                <Error />
+                </Route>
+                </Switch>
             </Router>
         )
 }

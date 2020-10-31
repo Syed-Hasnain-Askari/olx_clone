@@ -81,7 +81,7 @@ import Category from './Category';
                                     <ion-icon name="search"></ion-icon>
                                     <button className="btn location" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Punjab
-                                    <span className="chevron-down"><ion-icon name="chevron-down"></ion-icon></span>
+                                    <span className="chevron-down-header"><ion-icon name="chevron-down"></ion-icon></span>
                                     </button>
                                     {/* <span className="chevron-down"><ion-icon name="chevron-down"></ion-icon></span> */}
 
@@ -139,7 +139,7 @@ import Category from './Category';
                             </li>
                         </ul>
 
-                        <label className="active mr-3" onClick={() =>openModal()}>login</label>
+                        <label className="ml-4 text-login" name="login" onClick={() =>openModal()}>Login</label>
                         <button className="btn btn-outline my-2 my-sm-0 mr-5 rounded-pill sell-button" type="submit">SignUp</button>
 
                     </div>

@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
+  
 }
 body {
   margin: 0;
@@ -16,8 +17,7 @@ body {
   height: 68px;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Courier New',monospace;
 }
 .logo{
   background:transparent;
@@ -62,7 +62,7 @@ code {
 .dropdown-menu{
   width: 300px;
 }
-.chevron-down ion-icon{
+.chevron-down-header ion-icon{
   position: absolute;
   width: 30px;
   height: 30px;
@@ -114,27 +114,30 @@ a:hover
    cursor:pointer;  
 }
 .text-login{
+    margin-top: 13px;
     color: #002f34;
     border-bottom: 2px solid #002f34;
     padding: 0;
     height: auto;
     margin-right: 30px;
     font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
 }
 .chat-icon{
   margin-top: 9px;
   border-color: black;
 }
 .user-icon{
-  margin-top: 15px;
+  margin-top: 10px;
   width: 35px;
   height: 35px;
 }
 .chevron-down ion-icon{
+
   width: 25px;
   height: 25px;
-  margin-top: 20px;
-  margin-left: 10px;
 }
 .sell-button{
   width:90px;
