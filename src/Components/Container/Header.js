@@ -140,7 +140,7 @@ import Category from './Category';
                         </ul>
 
                         <label className="ml-4 text-login" name="login" onClick={() =>openModal()}>Login</label>
-                        <button className="btn btn-outline my-2 my-sm-0 mr-5 rounded-pill sell-button" type="submit">SignUp</button>
+                        <button className="btn btn-outline my-2 my-sm-0 mr-5 rounded-pill sell-button" type="submit">Sell</button>
 
                     </div>
                 </nav>

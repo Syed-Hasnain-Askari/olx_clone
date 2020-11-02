@@ -1,7 +1,6 @@
 import React, { useState,useContext } from 'react';
 import { MdFavorite } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import Model from './popup';
 import Modal from 'react-awesome-modal';
 import Data from '../../Data.json';
 import firebase from "firebase/app";
@@ -12,7 +11,6 @@ const Cards = (props) => {
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
     const [visible,setVisible] = useState(false);
-
     // var products = JSON.parse(localStorage.getItem('Data') || '[]')
     const user = useContext(UserContext);
     const handleClickButton = () => {
@@ -47,6 +45,7 @@ const Cards = (props) => {
     const closeModal = ()=> {
         setVisible(false)
     }
+
     if(props.userAuth == null)
     {
         return(
