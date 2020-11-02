@@ -1,43 +1,37 @@
-import React, { useState,useContext } from 'react';
+import React, { useState,useContext} from 'react';
 import { MdFavorite } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Modal from 'react-awesome-modal';
 import Data from '../../Data.json';
-import firebase from "firebase/app";
-import { auth } from "../../firebase";
 import { UserContext } from "../../provider/Userprovider";
 import { signInWithGoogle } from '../../firebase'
 const Cards = (props) => {
+
+    var products = JSON.parse(localStorage.getItem('Data') || '[]')
+
+    const [userAuth,setUserAuth] = useState(null)
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
     const [visible,setVisible] = useState(false);
-    // var products = JSON.parse(localStorage.getItem('Data') || '[]')
-    const user = useContext(UserContext);
-    const handleClickButton = () => {
-        if (active != true && props.userAuth == null) {
-            setActive(false);
-            openModal();
-            // // Push the values in products varable
-            // products.push(UserData)
-            // setUserdata(
+    const [productData,setProductData] = useState([products]);
+    
+    // Run When User Not Login
+    const handleClickButtonWhenNotLogin = () => {
+        openModal()
+    }
+    // Run When User Login 
+    const handleClickButtonWhenLogin = () =>{
+            if (active !== true) {
+                setActive(true);
+                setColors("red");
+                // Push the values in products varable
+                products.push(props.data)
 
-            //     // set the products values in String from
-            //     localStorage.setItem("Data", JSON.stringify(products))
-            // )
+                // set the products values in String from
+                localStorage.setItem("Data", JSON.stringify(products)) 
+            }
         }
-        // if (active != true) {
-        //     setActive(false);
-        //     setColors("#333");
-        //     console.log("bye")
-
-        // }
-        if (active != true && props.userAuth != null) {
-            setActive(false);
-            setColors("red");
-            console.log("bye")
-
-        }
-    };
+   
     const openModal = ()=>{
         setVisible(true)
     }
@@ -46,7 +40,7 @@ const Cards = (props) => {
         setVisible(false)
     }
 
-    if(props.userAuth == null)
+    if(props.auth == null)
     {
         return(
 
@@ -83,7 +77,7 @@ const Cards = (props) => {
             <div className="card w-100 card-product mt-3 shadow">
                 <div className="d-flex justify-content-between mt-2 ml-2 mr-2">
                     <div><p className=" badge badge-warning">Feature</p></div>
-                    <div><a className="icons" onClick={() => handleClickButton()}><MdFavorite size={26} color={color}></MdFavorite></a></div>
+                    <div><a className="icons" onClick={() => handleClickButtonWhenNotLogin()}><MdFavorite size={26} color={color}></MdFavorite></a></div>
                 </div>
                 <Link to={`/Preview/${props.name}`}>
                     <div className="row justify-content-center mx-auto">
@@ -107,49 +101,58 @@ const Cards = (props) => {
                     </Link>
             </div>
         </div>
-        )};
-    return (
-        <div className="col-lg-3 col-md-4 col-sm-6">
-            <div className="card w-100 card-product mt-3 shadow">
-                <div className="d-flex justify-content-between mt-2 ml-2 mr-2">
-                    <div><p className=" badge badge-warning">Feature</p></div>
-                    <div><a className="icons" onClick={() => handleClickButton()}><MdFavorite size={26} color={color}></MdFavorite></a></div>
-                </div>
-                <Link to={`/Preview/${props.name}`}>
-                    <div className="row justify-content-center mx-auto">
-                        <img src={props.image} alt={props.title} className="card-img-top card-img"></img>
-
+        )}
+        return (
+            <div className="col-lg-3 col-md-4 col-sm-6">
+                <div className="card w-100 card-product mt-3 shadow">
+                    <div className="d-flex justify-content-between mt-2 ml-2 mr-2">
+                        <div><p className=" badge badge-warning">Feature</p></div>
+                        
+                        <div>
+                        <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
+                        <a className="icons"><MdFavorite onClick={() => handleClickButtonWhenLogin()} size={26} color={color}></MdFavorite></a>
+                         </div>
+                        
                     </div>
-                    <div className="row mt-3">
-                        <h5 className=" ml-4 card-title">{props.price}</h5>
-                    </div>
-                    <div className="row">
-                        <p className="card-subtitle text-muted ml-4">{props.title}</p>
-                    </div>
-                    <div className="row">
-                        <div className="card-body">
-                            <div className="d-flex justify-content-between">
-                                <div><p className="text-capitalize card-text"><small>{props.location}</small></p></div>
-                                <div><p className="text-capitalize card-text"><small>{props.date}</small></p></div>
+                    <Link to={`/Preview/${props.name}`}>
+                        <div className="row justify-content-center mx-auto">
+                            <img src={props.image} alt={props.title} className="card-img-top card-img"></img>
+    
+                        </div>
+                        <div className="row mt-3">
+                            <h5 className=" ml-4 card-title">{props.price}</h5>
+                        </div>
+                        <div className="row">
+                            <p className="card-subtitle text-muted ml-4">{props.title}</p>
+                        </div>
+                        <div className="row">
+                            <div className="card-body">
+                                <div className="d-flex justify-content-between">
+                                    <div><p className="text-capitalize card-text"><small>{props.location}</small></p></div>
+                                    <div><p className="text-capitalize card-text"><small>{props.date}</small></p></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+     }   
 const Product = () => {
     const user = useContext(UserContext);
     const [data, setdata] = useState(Data)
-    const [userAuth,setUserAuth] = useState(user)
+    const [userAuth, setUserAuth] = useState(user)
+    console.log(user)
+    
     return (
+
         <div className="container">
             <div className="row">
-                {Object.keys(data).map((product) => (
+                {Object.keys(data).map((product,key) => (
                     <Cards
+                        key={key}
+                        data={key}
                         auth={userAuth}
-                        data={data}
                         name={product}
                         id={data[product].id}
                         image={data[product].image}

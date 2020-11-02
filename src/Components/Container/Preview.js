@@ -17,17 +17,15 @@ export default function Preview() {
 
     var products = JSON.parse(localStorage.getItem('Data') || '[]')
     const onClickhandler = () => {
-        if (active != true) {
+        if (active !== true) {
             setActive(true);
             setColors("red");
 
             // Push the values in products varable
             products.push(data)
-            setUserdata(
 
-                // set the products values in String from
-                localStorage.setItem("Data", JSON.stringify(products))
-            )
+            // set the products values in String from
+            localStorage.setItem("Data", JSON.stringify(products))
         }
         if (active == true) {
             setActive(false);
