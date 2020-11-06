@@ -1,12 +1,11 @@
 import React, { useContext} from 'react';
 import Category from './Category';
-import FavList from './FavList';
+import {FavList} from './FavList';
 import logo from './images/logo.webp';
 import previewbanner from './images/previewbanner.png';
 import avatar from './images/avatar1.png'
 import { MdMyLocation } from "react-icons/md";
-import {FaRegBell} from 'react-icons/fa';
-import {BsChat} from 'react-icons/bs';
+import {BsBell, BsChat} from 'react-icons/bs';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { auth } from "../../firebase";
 import { UserContext } from "../../provider/Userprovider";
@@ -89,11 +88,29 @@ export default function Main() {
                                 </div>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link chat-icon ml-4" href="#"><BsChat size={26}/></a>
+                                <a className="nav-link chat-icon ml-4"><BsChat size={26}/></a>
                                 </li>
                                 
-                                <li className="nav-item ml-4">
-                                <a className="nav-link chat-icon " href="#"><FaRegBell size={26}/></a>
+                                <li className="nav-item ml-4 mt-3">
+                                <div className="dropdown d-inline-flex dropleft">
+                                        <span className="chevron-down" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <BsBell size={26}></BsBell>
+                                        </span>
+    
+                                        <div className="dropdown-menu mt-5 ml-n5 mr-n5" aria-labelledby="dropdownMenuButton">
+    
+                                            <div className="list-group">
+                                            <div className="media">
+                                                <div className="media-body">
+                                                <h6 className="text-center mt-4">No notification</h6>
+                                                <h6 className="text-center mt-2"><small>Check back here for updates!</small></h6>
+                                                </div>
+                                            </div>
+
+                                            </div>
+    
+                                        </div>
+                                    </div>
                                 </li>
                                 <li className="nav-item ml-4">
                                 <img className="rounded-circle user-icon" src={avatar} alt="..."></img>
@@ -115,7 +132,7 @@ export default function Main() {
                                                 <a className="ml-2"><small>View and Edit Profile</small></a>
                                                 </div>
                                             </div>
-                                                <a href="#" onClick={()=>FavList()} className="list-group-item list-group-item-action">
+                                                <a onClick={()=>FavList()} className="list-group-item list-group-item-action">
                                                 <div className="d-flex w-100 h-25">
                                                 <svg width="23px" height="23px" viewBox="0 0 1024 1024" data-aut-id="icon" class=""
                                                          fill-rule="evenodd">
@@ -159,7 +176,7 @@ export default function Main() {
                                             </div>
                                                 </a>
     
-                                                <a href="#" className="list-group-item list-group-item-action">
+                                                <a className="list-group-item list-group-item-action">
                                                 <div className="d-flex w-100 h-25">
                                                 <svg width="23px" height="23px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd"><path class="rui-77aaa" 
                                                 d="M891.008 822.315l47.659 48.853-47.701 48.085h-757.931l-47.701-48.853 47.787-48.043h757.888zM493.525 85.333l46.507 46.592 0.213 475.179 178.475-189.483 62.976 0.299-0.256 58.752 2.091 4.267-290.005 302.592-291.84-304.512 4.011-4.139 0.256-57.472 62.507 0.213 178.475 189.483 0.171-475.179 46.421-46.592z">
@@ -170,7 +187,7 @@ export default function Main() {
                                             </div>
                                                 </a>
     
-                                                <a href="#" onClick={()=>auth.signOut()} className="list-group-item list-group-item-action">
+                                                <a onClick={()=>auth.signOut()} className="list-group-item list-group-item-action">
                                                 <div className="d-flex w-100 h-25">
                                                 <svg width="23px" height="23px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd">
                                                     <path className="rui-77aaa" d="M128 85.333l-42.667 42.667v768l42.667 42.667h768l42.667-42.667v-213.333l-42.667-42.667-42.667 42.667v170.667h-682.667v-682.667h682.667v170.667l42.667 42.667 42.667-42.667v-213.333l-42.667-42.667h-768zM494.336 298.667l-183.168 183.168v60.331l183.168 183.168h60.331v-60.331l-110.336-110.336h323.669l42.667-42.667-42.667-42.667h-323.669l110.336-110.336v-60.331h-60.331z"></path></svg>
@@ -188,7 +205,7 @@ export default function Main() {
                         </ul>
     
                         
-                        <button className="btn btn-outline my-2 my-sm-0 mr-5 rounded-pill sell-button" type="submit">Sell</button>
+                       <Link to={'/SellButton'}><a className="btn btn-outline my-2 my-sm-0 mr-5 rounded-pill sell-button">Sell</a></Link>
     
                     </div>
                 </nav>

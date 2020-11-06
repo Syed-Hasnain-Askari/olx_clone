@@ -5,11 +5,14 @@ import Modal from 'react-awesome-modal';
 import Data from '../../Data.json';
 import { UserContext } from "../../provider/Userprovider";
 import { signInWithGoogle } from '../../firebase'
+import Header from './Header';
+import Main from './Main';
 const Cards = (props) => {
 
     var products = JSON.parse(localStorage.getItem('Data') || '[]')
+    const user = useContext(UserContext);
 
-    const [userAuth,setUserAuth] = useState(null)
+    const [userAuth,setUserAuth] = useState(user)
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
     const [visible,setVisible] = useState(false);
@@ -40,7 +43,7 @@ const Cards = (props) => {
         setVisible(false)
     }
 
-    if(props.auth == null)
+    if(userAuth == null)
     {
         return(
 
@@ -142,17 +145,18 @@ const Product = () => {
     const user = useContext(UserContext);
     const [data, setdata] = useState(Data)
     const [userAuth, setUserAuth] = useState(user)
-    console.log(user)
-    
+    // console.log(user)
+    if(userAuth == null){
     return (
-
+            <div>
+        <Header/>
         <div className="container">
             <div className="row">
                 {Object.keys(data).map((product,key) => (
                     <Cards
                         key={key}
                         data={key}
-                        auth={userAuth}
+                    
                         name={product}
                         id={data[product].id}
                         image={data[product].image}
@@ -164,7 +168,31 @@ const Product = () => {
 
                 ))}
             </div>
+            </div>
+        </div>
+    )}
+    return (
+        <div>
+        <Main/>
+        <div className="container">
+            <div className="row">
+                {Object.keys(data).map((product,key) => (
+                    <Cards
+                        key={key}
+                        data={key}
+                    
+                        name={product}
+                        id={data[product].id}
+                        image={data[product].image}
+                        title={data[product].title}
+                        price={data[product].price}
+                        location={data[product].location}
+                        date={data[product].date}>
+                    </Cards>
 
+                ))}
+            </div>
+            </div>
         </div>
     )
 }

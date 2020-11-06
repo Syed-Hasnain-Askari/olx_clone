@@ -1,16 +1,15 @@
 import React, {useContext } from "react";
-import Header from '../Container/Header';
-import Products from '../Container/Products';
+import Product from '../Container/Products';
 import Preview from '../Container/Preview';
-import FavList from '../Container/FavList';
-import Main from '../Container/Main';
+import {FavList} from '../Container/FavList';
 import Error from '../Container/Error'
-import MainHeader from '../Container/MainHeader';
+import Example from '../Container/SellButton'
 import { UserContext } from "../../provider/Userprovider";
 import "firebase/auth";
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
 } from "react-router-dom";
 function AppRoute(){
     
@@ -18,21 +17,24 @@ function AppRoute(){
         return(
             user ?
             <Router>
-                <Route exact path='/' component={Main}></Route>
-                <Route exact path='/' component={Products}></Route>
-                <Route exact path='/:id' component={Products}></Route>
+                
+                <Route exact path='/' component={Product}></Route>
+                <Switch>
                 <Route path='/Preview/:id' component={Preview}></Route>
                 <Route path='/FavList' component={FavList}></Route>
+                <Route path='/SellButton' component={Example}></Route>
+                <Route path="*"><Error/></Route>
+                </Switch>
+                  
             </Router>            
            :
             <Router>
-                <Route exact path='/' component={Header}></Route>
-                <Route path='/Products' component={Products}></Route>
+            <Switch>
+                <Route exact path='/' component={Product}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
-                <Route path='/FavList' component={FavList}></Route>
-                <Route path='/MainHeader' component={MainHeader}></Route>
+                <Route path='/SellButton' component={Example} ></Route>
                 <Route path="*"><Error/></Route>
-              
+            </Switch>
             </Router>
         )
 }
