@@ -3,8 +3,6 @@ import logo from './images/logo.webp';
 import { MdMyLocation } from "react-icons/md";
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import Modal from 'react-awesome-modal';
-import firebase from "firebase/app";
-import { auth } from "../../firebase"
 import { signInWithGoogle } from '../../firebase'
 import previewbanner from './images/previewbanner.png'
 import { UserContext } from "../../provider/Userprovider";

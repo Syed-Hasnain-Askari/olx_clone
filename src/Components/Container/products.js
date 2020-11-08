@@ -1,6 +1,6 @@
 import React, { useState,useContext} from 'react';
 import { MdFavorite } from "react-icons/md";
-import { Link, Redirect } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import Modal from 'react-awesome-modal';
 import Data from '../../Data.json';
 import { UserContext } from "../../provider/Userprovider";
