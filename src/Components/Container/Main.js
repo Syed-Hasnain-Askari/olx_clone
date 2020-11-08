@@ -12,10 +12,10 @@ import { UserContext } from "../../provider/Userprovider";
 import {Link} from 'react-router-dom'
 import './App.css';
 
-export default function Main() {
-    const user = useContext(UserContext);
-    if(user!==null){
-        return (
+export default function Main(props) {
+    
+    const user = useContext(UserContext)
+        return(
             <>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top top-navbar">
                     <a className="navbar-brand" href="#">
@@ -31,7 +31,7 @@ export default function Main() {
                                     <ion-icon name="search"></ion-icon>
                                     <button className="btn location" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Punjab
-                                    <span className="chevron-down"><ion-icon name="chevron-down"></ion-icon></span>
+                                    <span className="chevron-down-header"><ion-icon name="chevron-down"></ion-icon></span>
                                     </button>
                                     {/* <span className="chevron-down"><ion-icon name="chevron-down"></ion-icon></span> */}
     
@@ -113,7 +113,7 @@ export default function Main() {
                                     </div>
                                 </li>
                                 <li className="nav-item ml-4">
-                                <img className="rounded-circle user-icon" src={avatar} alt="..."></img>
+                                <img className="rounded-circle user-icon" src={props.photoUrl} alt="..." style={{width:"35px",height:"35px"}}></img>
                                 </li>
                                 <li className="nav-item mt-3">
                                 <div className="dropdown d-inline-flex dropleft">
@@ -125,11 +125,11 @@ export default function Main() {
     
                                             <div className="list-group">
                                             <div className="media">
-                                                <img src={avatar} className="rounded-circle ml-4 mt-3 user-icon  " alt="..." />
+                                                <img src={props.photoUrl} className="rounded-circle ml-4 mt-3 user-icon  " alt="..." style={{width:"56px",height:"56px"}}/>
                                                 <div className="media-body">
-                                                <h6 className="mt-2 ml-2 text-muted"><small>Hellow</small></h6>
-                                                <h4 className="ml-2">Hasnain Askari</h4>
-                                                <a className="ml-2"><small>View and Edit Profile</small></a>
+                                                <h6 className="mt-2 ml-2 text-muted"><small>Hello,</small></h6>
+                                                <h3 className="ml-2 text-capitalize">{props.name}</h3>
+                                                <a className="ml-2 pt-0"><small>View and Edit Profile</small></a>
                                                 </div>
                                             </div>
                                                 <a onClick={()=>FavList()} className="list-group-item list-group-item-action">
@@ -213,6 +213,4 @@ export default function Main() {
                 <img src={previewbanner} className="img-fluid d-block w-100"></img>
             </>
         )
-    }
-    
 }

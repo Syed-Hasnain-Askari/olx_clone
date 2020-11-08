@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useContext, useState} from 'react';
 import logo from './images/logo.webp';
 import { MdMyLocation } from "react-icons/md";
 import { HiOutlineLocationMarker } from 'react-icons/hi';
@@ -9,17 +9,10 @@ import { UserContext } from "../../provider/Userprovider";
 import './App.css';
 import Category from './Category';
 
- const Header = (props)=>{
+ const Header = ()=>{
          const [visible,setVisible] = useState(false);
-         const [isLoggedIn,setIsLoggedIn] = useState(null);
-    // componentDidMount() {
-    //     firebase.auth().onAuthStateChanged(user => {
-    //       if (user) { this.setState({ isLoggedIn: true })} 
-    //       else { this.setState({ isLoggedIn: false })}
-    //     })
-    //   }
-
-
+        const user = useContext(UserContext)
+        console.log(user)
     const openModal = ()=> {
        setVisible(true)
     }

@@ -144,19 +144,17 @@ const Cards = (props) => {
 const Product = () => {
     const user = useContext(UserContext);
     const [data, setdata] = useState(Data)
-    const [userAuth, setUserAuth] = useState(user)
-    // console.log(user)
-    if(userAuth == null){
+    const [name,setName] = useState(user)
+    if(user != null){   
     return (
-            <div>
-        <Header/>
+        <div>
+        <Main name={user.displayName} photoUrl={user.photoURL}/>
         <div className="container">
             <div className="row">
                 {Object.keys(data).map((product,key) => (
                     <Cards
                         key={key}
                         data={key}
-                    
                         name={product}
                         id={data[product].id}
                         image={data[product].image}
@@ -173,14 +171,13 @@ const Product = () => {
     )}
     return (
         <div>
-        <Main/>
+        <Header/>
         <div className="container">
             <div className="row">
                 {Object.keys(data).map((product,key) => (
                     <Cards
                         key={key}
                         data={key}
-                    
                         name={product}
                         id={data[product].id}
                         image={data[product].image}

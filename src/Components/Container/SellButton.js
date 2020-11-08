@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
+import {UserContext} from '../../provider/Userprovider';
 import avatar from './images/avatar.png'
 import logo from './images/logo.webp';
 import {AiOutlineArrowLeft} from 'react-icons/ai'
-export default function Example() {
-
-    const [image,setImage] = useState({
-      profileImg:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-    })
-    const imageHandler = (e) => {
-      const reader = new FileReader();
-      reader.onload = () =>{
-        if(reader.readyState === 2){
-          setImage({profileImg: reader.result})
-        }
-      }
-      reader.readAsDataURL(e.target.files[0])
-    };
-    const [data,setData] = useState({})
-    const click = ()=>{
-      const price = document.getElementById("price").value
-      const name = document.getElementById("name").value
-      const lname = document.getElementById("lname").value
-      setData({
-        price:price,
-        name:name,
-        lname:lname,
+export default function SellButton() {
+  
+      const user = useContext(UserContext)
+      const [image,setImage] = useState({
+        profileImg:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
       })
-      console.log(price)
-      console.log(name)
-      console.log(lname)
-    }
-    return (
+  
+      const imageHandler = (e) => {
+        const reader = new FileReader();
+        reader.onload = () =>{
+          if(reader.readyState === 2){
+            setImage({profileImg: reader.result})
+          }
+        }
+        reader.readAsDataURL(e.target.files[0])
+      };
+  
+      const [data,setData] = useState({})
+      const click = ()=>{
+        const price = document.getElementById("price").value
+        const fname = document.getElementById("name").value
+        const lname = document.getElementById("lname").value
+        setData({
+          price:price,
+          fname:fname,
+          lname:lname,
+        })
+        console.log(price)
+        console.log(fname)
+        console.log(lname)
+      }
+
+      if(user!=null){
+        const name = user.displayName
+        const photoUrl = user.photoURL
+      return (
         <div>
           
         <nav class="navbar navbar-light bg-light">
@@ -48,11 +56,11 @@ export default function Example() {
     <hr/>
     <h5 className="card-title">INCLUED SOME DETAILS</h5>
     <p className="card-text">Conditions *</p>
-    <button type="button" className="btn btn-light">New</button>
-    <button type="button" className="btn btn-light ml-3">Used</button>
+    <button type="button" className="btn btn-light border border-secondary">New</button>
+    <button type="button" className="btn btn-light border border-secondary ml-3">Used</button>
     <p className="card-text">Type *</p>
-    <button type="button" className="btn btn-light">Apple</button>
-    <button type="button" className="btn btn-light">Q-Mobile</button>
+    <button type="button" className="btn btn-light border border-secondary">Apple</button>
+    <button type="button" className="btn btn-light border border-secondary ml-3">Q-Mobile</button>
     <div className="needs-validation mt-3" novalidate>
       <div className="row">
         <div className="col-md-6">
@@ -93,20 +101,12 @@ export default function Example() {
   <h5 className="card-title mt-5">Upload upto 12 Photos</h5>
   <div className="row">
     <div className="col-md-3">
-      <div className="card" style={{width:"160px",height:"130px"}}>
-     <a onChange={()=>imageHandler()} type="file"><img src={image.profileImg} className="img-fluid"></img></a>
+      <div className="card pb-5" style={{width:"160px",height:"150px"}}>
+     <img src={image.profileImg} className="img-fluid" style={{width:"160px",height:"150px"}}></img>
+     <input type="file" id="input1" accept="image/*" onChange={imageHandler}></input>
      </div>
     </div>
-    <div className="col-md-3">
-      <div className="card" style={{width:"160px",height:"130px"}}>
-     <a onChange={()=>imageHandler()} type="file"><img src={image.profileImg} className="img-fluid"></img></a>
-     </div>
-    </div>
-    <div className="col-md-3">
-      <div className="card" style={{width:"160px",height:"130px"}}>
-     <a onChange={()=>imageHandler()} type="file"><img src={image.profileImg} className="img-fluid"></img></a>
-     </div>
-    </div>
+ 
   </div>
   
   <hr/>
@@ -130,10 +130,10 @@ export default function Example() {
         <h5 className="card-title mt-5">REVIEW YOUR DETAIL</h5>
         <div className="row ml-4">
         <div className="media">
-        <img src={avatar} className="mr-3 rounded-circle" alt="..." style={{width:"100px",height:"100px"}}/>
+        <img src={photoUrl} className="mr-3 rounded-circle" alt="..." style={{width:"100px",height:"100px"}}/>
         <div className="media-body">
-        <p className="mt-0 pb-0">Name</p>
-        <input type="text" class="form-control form-control-lg" value="Hasnain"></input>
+        <p className="mt-0 pb-0 font-weight-normal mb0">Name</p>
+    <input type="text" class="form-control-lg text-dark border border-secondary mb0" value={name} ></input>
       </div>
         </div>
         </div>
@@ -154,12 +154,11 @@ export default function Example() {
           </div>
         </div>
 <hr/>
-  <button className="btn btn-outline-info mt-4 ml-3" onClick={()=>click()}>Post now</button>
+  <button className="btn btn-outline-info mt-4 ml-3">Post now</button>
     </div>
   </div>
 </div>
-
-        </div>
+</div>
        
-    );
+  )};
 }

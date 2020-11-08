@@ -6,17 +6,32 @@ import avatar from './images/avatar.png';
 import { useParams } from 'react-router-dom';
 import Data from '../../Data.json';
 import Main from './Main';
+import Modal from 'react-awesome-modal';
+import { signInWithGoogle } from '../../firebase';
 
 export default function Preview() {
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
+    const [visible,setVisible] = useState(false);
     const [UserData, setUserdata] = useState([Data]);
 
+    const openModal = ()=>{
+        setVisible(true)
+    }
+
+    const closeModal = ()=> {
+        setVisible(false)
+    }
+
     const user = useContext(UserContext);
-    const [userAuth,setUserAuth] = useState(user)
 
     var products = JSON.parse(localStorage.getItem('Data') || '[]')
-    const onClickhandler = () => {
+     
+    // Run When User Not Login
+     const handleClickButtonWhenNotLogin = () => {
+        openModal()
+    }
+    const handleClickButtonWhenLogin = () => {
         if (active !== true) {
             setActive(true);
             setColors("red");
@@ -49,10 +64,10 @@ export default function Preview() {
     if (!data) {
         return <h1>Not Found</h1>
     }
-    if(userAuth == null){
+    if(user !== null){
         return (
             <div>
-                <Header />
+                <Main />
                 <div className="container">
                     <div className="row mt-5">
                         <div className="col-md-8 col-sm-12 col-lg-8">
@@ -69,7 +84,7 @@ export default function Preview() {
     
                                     <div>
                                         <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
-                                        <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite"><MdFavorite size={26} color={color} onClick={() => onClickhandler()}></MdFavorite></a>
+                                        <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite"><MdFavorite size={26} color={color} onClick={() => handleClickButtonWhenLogin()}></MdFavorite></a>
                                     </div>
     
                                 </div>
@@ -102,7 +117,36 @@ export default function Preview() {
     }
     return(
         <div>
-            <Main/>
+            <Header/>
+            <Modal visible={visible} width="400" height="584" effect="fadeInUp" onClickAway={() => closeModal()}>
+                        <div className="mt-5 p-3 popup_wrapper">
+
+
+                            <div className="row mx-auto mb-2">
+
+                                <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
+
+                            </div>
+
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button ">Continue with facebook</button>
+                                
+                            </div>
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()}>Continue with google</button>
+                                
+                            </div>
+                            <div className="row mx-auto mb-2">
+                                
+                                <button className="btn btn-lg btn-block btn-outline popup-button">Continue with email</button>
+                                
+                            </div>
+
+                            <a href="javascript:void(0);" onClick={() => closeModal()}>Close</a>
+                        </div>
+                    </Modal>
             <div className="container">
                 <div className="row mt-5">
                     <div className="col-md-8 col-sm-12 col-lg-8">
@@ -119,7 +163,7 @@ export default function Preview() {
 
                                 <div>
                                     <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
-                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite"><MdFavorite size={26} color={color} onClick={() => onClickhandler()}></MdFavorite></a>
+                                    <a className="icons mr-3" data-toggle="tooltip" data-placement="bottom" title="Favourite"><MdFavorite size={26} color={color} onClick={() => handleClickButtonWhenNotLogin()}></MdFavorite></a>
                                 </div>
 
                             </div>
