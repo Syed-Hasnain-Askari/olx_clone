@@ -1,12 +1,47 @@
-import React,{Component} from 'react';
+import React,{Component,useEffect, useState} from 'react';
 import {db,auth} from '../../firebase';
 import firebase from 'firebase/app';
 import "firebase/storage"
+function Retrive(){
+  const [data,Set_User_Data] = useState([])
+  // useEffect( () => {
+  //   const fetchData = async () => {
+  //     const db = firebase.firestore();
+  //      db.collection("Sell_Ad/Users").onSnapshot(function(querySnapshot) {
+  //       var user_array = [];
+  //       querySnapshot.forEach(function(doc) {
+  //         user_array.push(doc.data());
+  //       });
+  //       console.log("Current cities in CA: ", user_array.join(", "));
+  //       Set_User_Data(user_array)
+  //   });
+  
+  //   };
+  //   fetchData();
+  // });
+ 
+  return(
+    <div>
+      <h1>hey</h1>
+      {data.map(note => {
+  return (
+    <div key={note.name}>
+      {note[0].name}
+    </div>
+  );
+})}
+    </div>
+  )
+}
+
+
 class FetchData extends Component{
     constructor(){
         super()
         this.state = {
-            users: [],
+            Name: [],
+            Lname: [],
+            Price: [],
             name:"",
             lname:"",
             price:"",
@@ -65,10 +100,14 @@ class FetchData extends Component{
     componentDidMount() {
         firebase.database().ref("Sell_Ad").on("child_added", snapshot => {
           let allNotes = [];
+          let Lname = [];
+          let Price = [];
           snapshot.forEach(snap => {
             allNotes.push(snap.child("name").val());
+            Lname.push(snap.child("lname").val());
+            Price.push(snap.child("price").val());
           });
-          this.setState({ users: allNotes });
+          this.setState({ Name: allNotes,Lname:Lname,Price:Price });
           console.log(this.state.users)
         });
     }
@@ -91,14 +130,23 @@ class FetchData extends Component{
                 placeholder="Price"
                 />
             <button className="btn btn-primary" onClick={this.createNote} >Click</button>
-            {this.state.users.map((note,key) => {
+            {this.state.Name.map((note,key) => {
             return (
                 <div key={key}>
+                  ffdfs
                 <h1>{note.name}</h1>
                 </div>
             );
             })}
-                
+             {this.state.Lname.map((note,key) => {
+            return (
+                <div key={key}>
+                  ffdfs
+                <h1>{note}</h1>
+                </div>
+            );
+            })}
+              
           </div>
       )
   
