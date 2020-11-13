@@ -1,39 +1,84 @@
 import React, { useState,useContext } from 'react';
+import firebase from 'firebase'
+import 'firebase/storage'
 import {UserContext} from '../../provider/Userprovider';
-import avatar from './images/avatar.png'
 import logo from './images/logo.webp';
+import addImage from './images/addimage.png';
 import {AiOutlineArrowLeft} from 'react-icons/ai'
-export default function SellButton() {
-  
+import {FiCamera} from 'react-icons/fi';
+function SellButton() {
       const user = useContext(UserContext)
-      const [image,setImage] = useState({
-        profileImg:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-      })
-  
+      const reader = new FileReader();
+
+      const [image1,setImage1] = useState(addImage)
+      const [image2,setImage2] = useState(addImage)
+
+      
       const imageHandler = (e) => {
         const reader = new FileReader();
         reader.onload = () =>{
-          if(reader.readyState === 2){
-            setImage({profileImg: reader.result})
+          if(reader.readyState == 2){
+            setImage1(reader.result)
+          }
+        }
+        reader.readAsDataURL(e.target.files[0])
+     }
+     const upload=(files)=>{const file = files[0];
+    
+      var uploadTask = firebase.storage().ref().child(`images/${file.name}`).put(file);
+      uploadTask.on('state_changed', function(snapshot){
+      
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED: // or 'paused'
+            console.log('Upload is paused');
+            break;
+          case firebase.storage.TaskState.RUNNING: // or 'running'
+            console.log('Upload is running');
+            break;
+        }
+      }, function(error) {
+        // Handle unsuccessful uploads
+      }, function() {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          console.log('File available at', downloadURL);
+          setImage1(downloadURL)
+        });
+      });
+      
+  }
+    
+      const imageHandler1 = (e) => {
+        const reader = new FileReader();
+        reader.onload = () =>{
+          if(reader.readyState == 2){
+            setImage1(reader.result)
           }
         }
         reader.readAsDataURL(e.target.files[0])
       };
+      // const UploadFile = (e)=>{
+      //   console.log(setFile({File:e.target.files[0]}))
+      //   // var ref = firebase.storage().ref().child(`images/${file.File.name}`).put(file.File);
+      // }
   
       const [data,setData] = useState({})
-      const click = ()=>{
-        const price = document.getElementById("price").value
-        const fname = document.getElementById("name").value
-        const lname = document.getElementById("lname").value
-        setData({
-          price:price,
-          fname:fname,
-          lname:lname,
-        })
-        console.log(price)
-        console.log(fname)
-        console.log(lname)
-      }
+      // const click = ()=>{
+      //   const price = document.getElementById("price").value
+      //   const fname = document.getElementById("name").value
+      //   const lname = document.getElementById("lname").value
+      //   setData({
+      //     price:price,
+      //     fname:fname,
+      //     lname:lname,
+      //   })
+      //   console.log(price)
+      //   console.log(fname)
+      //   console.log(lname)
+      // }
 
       if(user!=null){
         const name = user.displayName
@@ -100,11 +145,31 @@ export default function SellButton() {
   <hr/>
   <h5 className="card-title mt-5">Upload upto 12 Photos</h5>
   <div className="row">
+  <div className="col-md-3">
+  
+    <label htmlFor="input1"> <img src={image1} className="img-fluid" style={{width:"150px",height:"150px"}}></img></label>
+     
+     <input type="file" id="input1" style={{display:"none"}} className="form-control-file mb-3" accept="image/*"
+      onInput={(e)=> {upload(e.target.files)}} onChange={imageHandler}></input>
+     {/*  */}
+    </div>
     <div className="col-md-3">
-      <div className="card pb-5" style={{width:"160px",height:"150px"}}>
-     <img src={image.profileImg} className="img-fluid" style={{width:"160px",height:"150px"}}></img>
-     <input type="file" id="input1" accept="image/*" onChange={imageHandler}></input>
-     </div>
+    
+    <label htmlFor="input2"> <img src={image2} className="img-fluid" style={{width:"150px",height:"150px"}}></img></label>
+     
+     <input type="file" id="input2" style={{display:"none"}} className="form-control-file mb-3" accept="image/*" onChange={imageHandler1}></input>
+    </div>
+    <div className="col-md-3">
+    
+    <label htmlFor="input3"> <img src="..." className="img-fluid" style={{width:"160px",height:"150px"}}></img></label>
+     
+     <input type="file" id="input3" style={{display:"none"}} className="form-control-file mb-3" accept="image/*" onChange={imageHandler}></input>
+    </div>
+    <div className="col-md-3">
+    
+    <label htmlFor="input4"> <img src="..." className="img-fluid" style={{width:"160px",height:"150px"}}></img></label>
+     
+     <input type="file" id="input4" style={{display:"none"}} className="form-control-file mb-3" accept="image/*" onChange={imageHandler}></input>
     </div>
  
   </div>
@@ -162,3 +227,4 @@ export default function SellButton() {
        
   )};
 }
+export default SellButton

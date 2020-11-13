@@ -6,6 +6,7 @@ import Data from '../../Data.json';
 import { UserContext } from "../../provider/Userprovider";
 import { signInWithGoogle } from '../../firebase'
 import Header from './Header';
+import Footer from './Footer';
 import Main from './Main';
 const Cards = (props) => {
 
@@ -16,7 +17,6 @@ const Cards = (props) => {
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
     const [visible,setVisible] = useState(false);
-    const [productData,setProductData] = useState([products]);
     
     // Run When User Not Login
     const handleClickButtonWhenNotLogin = () => {
@@ -27,11 +27,6 @@ const Cards = (props) => {
             if (active !== true) {
                 setActive(true);
                 setColors("red");
-                // Push the values in products varable
-                products.push(props.data)
-
-                // set the products values in String from
-                localStorage.setItem("Data", JSON.stringify(products)) 
             }
         }
    
@@ -140,7 +135,7 @@ const Cards = (props) => {
                 </div>
             </div>
         );
-     }   
+}   
 const Product = () => {
     const user = useContext(UserContext);
     const [data, setdata] = useState(Data)
@@ -149,7 +144,7 @@ const Product = () => {
     return (
         <div>
         <Main name={user.displayName} photoUrl={user.photoURL}/>
-        <div className="container">
+        <div className="container mt-5 mb-0">
             <div className="row">
                 {Object.keys(data).map((product,key) => (
                     <Cards
@@ -167,6 +162,7 @@ const Product = () => {
                 ))}
             </div>
             </div>
+            <Footer/>
         </div>
     )}
     return (
@@ -189,8 +185,13 @@ const Product = () => {
 
                 ))}
             </div>
+            
             </div>
-        </div>
+            <div className="mt-5">
+            <Footer/>
+            </div>
+            
+        </div>   
     )
 }
 export default Product

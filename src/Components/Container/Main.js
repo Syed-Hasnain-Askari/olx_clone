@@ -1,20 +1,25 @@
-import React, { useContext} from 'react';
+import React,{useContext} from 'react';
+import {UserContext} from '../../provider/Userprovider'
 import Category from './Category';
-import {FavList} from './FavList';
+import FavList from './FavList';
 import logo from './images/logo.webp';
 import previewbanner from './images/previewbanner.png';
-import avatar from './images/avatar1.png'
 import { MdMyLocation } from "react-icons/md";
 import {BsBell, BsChat} from 'react-icons/bs';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { auth } from "../../firebase";
-import { UserContext } from "../../provider/Userprovider";
+import { useHistory } from "react-router-dom";
 import {Link} from 'react-router-dom'
 import './App.css';
 
-export default function Main(props) {
-    
-    const user = useContext(UserContext)
+function Main(props) {
+    const history = useHistory();
+    const routeChange = () =>{ 
+        let path = `FavList`; 
+        history.push(path);
+      }
+      const user = useContext(UserContext)
+      if(user!=null){
         return(
             <>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top top-navbar">
@@ -140,7 +145,7 @@ export default function Main(props) {
                                                         d="M349.46 85.333h487.619l40.635 40.635v609.524l-40.635 40.635h-487.619l-40.635-40.635v-609.524l40.635-40.635zM390.095 694.857h406.35v-528.254h-406.35v528.254zM146.286 247.873l40.635-40.635 40.635 40.635v609.524h528.254l40.635 40.635-40.635 40.635h-568.889l-40.635-40.635v-650.159zM512 329.143h162.54l40.635 40.635-40.635 40.635h-162.54l-40.635-40.635 40.635-40.635zM512 491.683h81.27l40.635 40.635-40.635 40.635h-81.27l-40.635-40.635 40.635-40.635z">
                                                         </path>
                                                         </svg>
-                                                        <Link to={'/FavList'}><p className="mb-1 ml-3">My Ads</p></Link>
+                                                        <li onClick={()=>routeChange()}>Ads</li>
                                                 </div>
                                                 <div className="d-flex w-100 h-25 pt-4">
                                                 <svg width="23px" height="23px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd"><path class="rui-77aaa" d="M426.667 42.667h170.667l42.667 42.667-42.667 42.667h256l42.667 42.667v768l-42.667 42.667h-682.667l-42.667-42.667v-768l42.667-42.667h256l-42.667-42.667 42.667-42.667zM213.333 896h597.333v-682.667h-597.333v682.667zM469.333 426.667v-85.333h256v85.333h-256zM298.667 426.667v-85.333h85.333v85.333h-85.333zM469.333 597.333v-85.333h256v85.333h-256zM298.667 597.333v-85.333h85.333v85.333h-85.333zM469.333 768v-85.333h256v85.333h-256zM298.667 768v-85.333h85.333v85.333h-85.333z">
@@ -213,4 +218,7 @@ export default function Main(props) {
                 <img src={previewbanner} className="img-fluid d-block w-100"></img>
             </>
         )
+      }
+       
 }
+export default Main

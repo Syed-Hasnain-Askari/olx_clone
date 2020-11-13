@@ -1,7 +1,4 @@
 import firebase from "firebase/app";
-import React from 'react';
-import {useHistory} from 'react-router-dom'
-import Product from './Components/Container/Products'
 import "firebase/auth";
 
 const firebaseConfig = {

@@ -1,6 +1,7 @@
 import React, { useState,useContext } from 'react';
 import { UserContext } from "../../provider/Userprovider";
 import Header from './Header';
+import Footer from './Footer';
 import { MdFavorite } from "react-icons/md"
 import avatar from './images/avatar.png';
 import { useParams } from 'react-router-dom';
@@ -14,6 +15,7 @@ export default function Preview() {
     const [active, setActive] = useState(false);
     const [visible,setVisible] = useState(false);
     const [UserData, setUserdata] = useState([Data]);
+    const user = useContext(UserContext);
 
     const openModal = ()=>{
         setVisible(true)
@@ -22,8 +24,6 @@ export default function Preview() {
     const closeModal = ()=> {
         setVisible(false)
     }
-
-    const user = useContext(UserContext);
 
     var products = JSON.parse(localStorage.getItem('Data') || '[]')
      
@@ -67,7 +67,7 @@ export default function Preview() {
     if(user !== null){
         return (
             <div>
-                <Main />
+                <Main name={user.displayName} photoUrl={user.photoURL}/>
                 <div className="container">
                     <div className="row mt-5">
                         <div className="col-md-8 col-sm-12 col-lg-8">
@@ -112,6 +112,7 @@ export default function Preview() {
     
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }
@@ -191,6 +192,7 @@ export default function Preview() {
 
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 
