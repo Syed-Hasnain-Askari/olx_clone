@@ -12,6 +12,8 @@ function SellButton() {
   const user = useContext(UserContext);
   const [image1, setImage1] = useState(addImage);
   const [image2, setImage2] = useState(addImage);
+  const [image3, setImage3] = useState(addImage);
+  const [image4, setImage4] = useState(addImage);
   const [data, setData] = useState({ user: "" });
   const [name, setName] = useState("");
   const [lname, setLastName] = useState("");
@@ -35,8 +37,7 @@ function SellButton() {
     fetchData();
 
   }, []);
-  console.log(data.user)
-
+  
   const imageHandler = (e) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -46,19 +47,56 @@ function SellButton() {
     }
     reader.readAsDataURL(e.target.files[0])
   }
+  const lastname = document.getElementById("lname")
+  const Title = document.getElementById("title")
+  const Name = document.getElementById("name")
+  const Description = document.getElementById("description")
+  const Price = document.getElementById("price")
+  const input1 = document.getElementById("input1")
+  const validation = ()=>{
+      if(Name.value === ""){
+        alert("Enter Name")
+      }
+      else if(lastname.value === "")
+      {
+        alert("Enter Last Name")
+      }
+      else if(Description.value === "")
+      {
+        alert("Enter Description")
+      }
+      else if(Price.value === ""){
+        alert("Enter Price")
+      }
+      else if(input1.value === ""){
+        alert("Selet Image")
+      }
+      else{
+        const d = new Date().toDateString()
+        firebase.database().ref("Sell_Ads/Users").push()
+          .set({
+            name,
+            lname,
+            price,
+            title,
+            description,
+            image1,
+            d,
+          })
+          RefreashField()
+      }
+  }
+  const RefreashField = ()=>{
+    lastname.value = ""
+    Name.value = ""
+    Title.value = ""
+    Description.value = ""
+    Price.value = ""
+    input1.value = ""
+  }
 
   const createNote = () => {
-    const d = new Date().toDateString()
-    firebase.database().ref("Sell_Ads/Users").push()
-      .set({
-        name,
-        lname,
-        price,
-        title,
-        description,
-        image1,
-        d,
-      })
+    validation()
   }
   const upload = (files) => {
     const file = files[0];
@@ -67,13 +105,13 @@ function SellButton() {
     uploadTask.on('state_changed', function (snapshot) {
 
       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('Upload is ' + progress + '% done');
+      // console.log('Upload is ' + progress + '% done');
       switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
-          console.log('Upload is paused');
+          // console.log('Upload is paused');
           break;
         case firebase.storage.TaskState.RUNNING: // or 'running'
-          console.log('Upload is running');
+          // console.log('Upload is running');
           break;
       }
     }, function (error) {
@@ -82,7 +120,7 @@ function SellButton() {
       // Handle successful uploads on complete
       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
       uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-        console.log('File available at', downloadURL);
+        // console.log('File available at', downloadURL);
         setImage1(downloadURL)
       });
     });
@@ -98,12 +136,6 @@ function SellButton() {
     }
     reader.readAsDataURL(e.target.files[0])
   };
-  // const UploadFile = (e)=>{
-  //   console.log(setFile({File:e.target.files[0]}))
-  //   // var ref = firebase.storage().ref().child(`images/${file.File.name}`).put(file.File);
-  // }
-
-
 
   if (user != null) {
     const name = user.displayName
@@ -164,19 +196,19 @@ function SellButton() {
       </div>
               </div>
               <hr />
-              <h5 className="card-title mt-4">SET PRICE</h5>
-              <p><small>Price</small></p>
-              <input type="text" class="form-control form-control-lg d-inline-block" id="price" onChange={(e) => setPrice(e.target.value)} placeholder="Username"></input>
+              <h5 className="card-title mt-4"></h5>
+              <p><small>Set Price</small></p>
+              <input type="text" class="form-control form-control-lg d-inline-block" id="price" onChange={(e) => setPrice(e.target.value)} placeholder="Username" required></input>
               <hr />
               <h5 className="card-title mt-5">Upload upto 12 Photos</h5>
               <div className="row">
                 <div className="col-md-3">
 
-                  <label htmlFor="input1"> <img src={image1} className="img-fluid" style={{ width: "150px", height: "150px" }}></img></label>
+                  <label htmlFor="input1"> <img src={image1} className="img-fluid" style={{ width: "150px", height: "150px" }} required></img></label>
 
                   <input type="file" id="input1" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*"
-                    onInput={(e) => { upload(e.target.files) }} onChange={imageHandler}></input>
-                  {/*  */}
+                    onInput={(e) => { upload(e.target.files) }} onChange={imageHandler} required></input>
+                  
                 </div>
                 <div className="col-md-3">
 
@@ -186,13 +218,13 @@ function SellButton() {
                 </div>
                 <div className="col-md-3">
 
-                  <label htmlFor="input3"> <img src="..." className="img-fluid" style={{ width: "160px", height: "150px" }}></img></label>
+                  <label htmlFor="input3"> <img src={image3} className="img-fluid" style={{ width: "160px", height: "150px" }}></img></label>
 
                   <input type="file" id="input3" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*" onChange={imageHandler}></input>
                 </div>
                 <div className="col-md-3">
 
-                  <label htmlFor="input4"> <img src="..." className="img-fluid" style={{ width: "160px", height: "150px" }}></img></label>
+                  <label htmlFor="input4"> <img src={image4} className="img-fluid" style={{ width: "160px", height: "150px" }}></img></label>
 
                   <input type="file" id="input4" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*" onChange={imageHandler}></input>
                 </div>

@@ -5,7 +5,6 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import {Link} from 'react-router-dom';
-import FavList from '../Container/FavList';
 import firebase from 'firebase/app';
 import "firebase/storage"
 function Ads(){
@@ -28,8 +27,7 @@ function Ads(){
     fetchData();
 
   }, []);
-  console.log(data.user)
-  
+
   if(user!=null){
     return(
       <div>

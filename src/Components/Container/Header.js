@@ -1,19 +1,16 @@
-import React, { useContext, useState} from 'react';
-import logo from './images/logo.webp';
+import React, { useState} from 'react';
 import {AiOutlineClose} from 'react-icons/ai'
 import banner from './images/olx_banner.jpg'
 import { MdMyLocation } from "react-icons/md";
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import Modal from 'react-awesome-modal';
 import { signInWithGoogle } from '../../firebase'
-import { UserContext } from "../../provider/Userprovider";
 import './App.css';
 import Category from './Category';
 
  const Header = ()=>{
          const [visible,setVisible] = useState(false);
-        const user = useContext(UserContext)
-        console.log(user)
+        
     const openModal = ()=> {
        setVisible(true)
     }

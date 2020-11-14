@@ -31,6 +31,7 @@ function AppRoute(){
             <Router>
             <Switch>
                 <Route exact path='/' component={Product}></Route>
+                <Route path='/Products' component={Product}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
                 <Route path="*"><Error/></Route>
             </Switch>
