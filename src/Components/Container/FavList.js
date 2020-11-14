@@ -1,6 +1,7 @@
 import React, { useState,useContext} from 'react';
 import {UserContext} from '../../provider/Userprovider';
 import {MdFavorite} from "react-icons/md";
+import {Link} from 'react-router-dom';
 import Main from '../Container/Main';
 import Footer from '../Container/Footer';
 
@@ -26,12 +27,12 @@ function FavList(props){
             return (
                 <div>      
                     <Main  name={user.displayName} photoUrl={user.photoURL}/>   
-                    <div className="Favlist-container">
+                    <div className="container">
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="d-flex">
-                                    <h4>ADS</h4>
-                                    <h4 className="ml-4">Favourite</h4>
+                                    <Link to={'/Ads'}><h4>ADS</h4></Link>
+                                    <Link to={'/FavList'}><h4 className="ml-4">Favourite</h4></Link>
                                 </div>
                             </div>
     

@@ -1,10 +1,17 @@
 import React from 'react'
 import './App.css';
+import playstore from './images/playstore.webp';
+import appstore from './images/appstore.webp';
+import {RiFacebookCircleLine} from 'react-icons/ri';
+import {TiSocialTwitterCircular} from 'react-icons/ti';
+import {BiPlayCircle} from 'react-icons/bi';
+import {AiOutlineInstagram} from 'react-icons/ai';
+
 export default function Footer() {
     return (
         
         <div className="mt-3" >
-        <div className="footer-middle">
+        <div className="footer footer-middle">
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-2 col-sm-6">
@@ -37,7 +44,7 @@ export default function Footer() {
               </div>
               <div className="col-md-2 col-sm-6">
                 {/*Column1*/}
-                <div className="footer-pad">
+                <div className="footer footer-pad">
                   <h6>ABOUT US</h6>
                   <ul className="list-unstyled">
                     <li><a href="#">Parks and Recreation</a></li>
@@ -70,17 +77,30 @@ export default function Footer() {
                 
               </div>
               <div className="col-md-2">
+                <div className="footer-pad">
                 <p>Follow Us</p>
                 <ul className="social-network social-circle">
-                  <li><a href="#" className="icoFacebook" title="Facebook"><i className="fa fa-facebook" /></a></li>
-                  <li><a href="#" className="icoLinkedin" title="Linkedin"><i className="fa fa-linkedin" /></a></li>
-                </ul>				
+                  <li><a href="#" className="icoFacebook" title="Facebook"><RiFacebookCircleLine size={26}></RiFacebookCircleLine></a></li>
+                  <li><a href="#" className="icoLinkedin" title="Linkedin"><TiSocialTwitterCircular size={26}></TiSocialTwitterCircular></a></li>
+                  <li><a href="#" className="icoFacebook" title="Facebook"><BiPlayCircle size={26}></BiPlayCircle></a></li>
+                  <li><a href="#" className="icoFacebook" title="Facebook"><AiOutlineInstagram size={26}></AiOutlineInstagram></a></li>
+                </ul>
+                <div className="row mt-5">
+                  <div className="col-md-4">
+                  <img src={playstore}></img>
+                  </div>
+                  <div className="col-md-4 ml-5">
+                  <img src={appstore}></img>
+                  </div>
+                </div>				
               </div>
             </div>
-            <div className="row">
-              <div className="col-md-12 copy">
-                <p className="text-center">© Copyright 2018 - Company Name.  All rights reserved.</p>
-              </div>
+            </div>
+            <div className=" row botton-footer d-flex justify-content-between">
+            
+                <div className="ml-3 pt-3"><p><b>Other Countries India</b> - South Africa - Indonesia</p></div>
+                <div className="pt-3 mr-3"><p><b>Free Classifieds in Pakistan.</b> © 2006-2020 OLX</p></div>
+              
             </div>
           </div>
         </div>

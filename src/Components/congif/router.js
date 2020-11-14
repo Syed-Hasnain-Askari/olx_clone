@@ -4,7 +4,7 @@ import Preview from '../Container/Preview';
 import FavList from '../Container/FavList'
 import Error from '../Container/Error';
 import SellButton from '../Container/SellButton';
-import FetchData from '../Container/FetchData';
+import Ads from '../Container/Ads';
 import { UserContext } from "../../provider/Userprovider";
 import {
   BrowserRouter as Router,
@@ -21,8 +21,9 @@ function AppRoute(){
                 <Route exact path="/" component={Product}></Route>
                 {/* <Route path='/Products' component={Product}></Route> */}
                 <Route path='/Preview/:id' component={Preview}></Route>
-                <Route path='/FavList' component={FavList}></Route>
                 <Route path='/SellButton' component={SellButton}></Route>
+                <Route path='/Ads' component={Ads}></Route>
+                <Route path="/FavList" component={FavList}></Route>
                 <Route path="*"><Error/></Route>
                 </Switch>
             </Router>            
@@ -31,7 +32,6 @@ function AppRoute(){
             <Switch>
                 <Route exact path='/' component={Product}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
-                <Route path='/FetchData' component={FetchData}></Route>
                 <Route path="*"><Error/></Route>
             </Switch>
             </Router>

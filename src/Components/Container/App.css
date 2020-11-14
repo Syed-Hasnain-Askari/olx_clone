@@ -1,18 +1,12 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Roboto', sans-serif;
+  color: #002f34;
 }
-
-
+/* NavigationBar */
 .top-navbar{
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
   height: 68px;
@@ -25,6 +19,7 @@ code {
   width: 60px;
   height: 60px;
 }
+/* Location Search Bar Section */
 .input-icons ion-icon{
   position: absolute; 
   width: 25px;
@@ -74,6 +69,7 @@ code {
 .nav-item-find{
     width: 500px;
 }
+/* Find Search Box Section */
 .find{
   margin-top: 9px;
   margin-left: 10px;
@@ -140,6 +136,7 @@ a:hover
   width: 25px;
   height: 25px;
 }
+/* Sell Button Design */
 .sell-button{
   width:90px;
   background-color: white;
@@ -151,6 +148,7 @@ a:hover
   font-weight: bold;
   font-size: 15px;
 }
+/* category-section */
 .category-section{
   margin-top: 60px;
 }
@@ -164,6 +162,7 @@ a:hover
   cursor: pointer;
   color: #002f34;
 }
+/* Pop Up dialog Box Section */
 .popup_wrapper{
   margin: 0 16px;
   border-radius: 3px;
@@ -224,16 +223,11 @@ footer a:hover {
   text-decoration: none;
 }
 
-/* container */
-.container {
-  margin-bottom: 0;
-}
-
-/* .copy {
+.copy {
   font-size: 12px;
   padding: 10px;
   border-top: 1px solid #FFFFFF;
-} */
+} 
 
 .footer-middle {
   padding-top: 2em;
@@ -241,7 +235,6 @@ footer a:hover {
   font-size: 14px;
   line-height: 20px;
 }
-
 
 /*SOCİAL İCONS*/
 
@@ -262,24 +255,6 @@ ul.social-network li {
 
 /* footer social icons */
 
-.social-network a.icoFacebook:hover {
-  background-color: #3B5998;
-}
-
-.social-network a.icoLinkedin:hover {
-  background-color: #007bb7;
-}
-
-.social-network a.icoFacebook:hover i,
-.social-network a.icoLinkedin:hover i {
-  color: #fff;
-}
-
-.social-network a.socialIcon:hover,
-.socialHoverClass {
-  color: #44BCDD;
-}
-
 .social-circle li a {
   display: inline-block;
   position: relative;
@@ -299,31 +274,14 @@ ul.social-network li {
   text-align: center;
 }
 
-.social-circle li a:hover i,
-.triggeredHover {
-  -moz-transform: rotate(360deg);
-  -webkit-transform: rotate(360deg);
-  -ms--transform: rotate(360deg);
-  transform: rotate(360deg);
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  transition: all 0.2s;
-}
-
-.social-circle i {
-  color: #595959;
-  -webkit-transition: all 0.8s;
-  -moz-transition: all 0.8s;
-  -o-transition: all 0.8s;
-  -ms-transition: all 0.8s;
-  transition: all 0.8s;
-}
-
 .social-network a {
   background-color: #F9F9F9;
 }
+.botton-footer{
+  background-color: #002f34;
+  color: white;
+}
+/* FavList.Js File Section */
 .Favlist-container{
   height: 700px;
 }

@@ -1,5 +1,7 @@
 import React, { useState,useContext} from 'react';
 import { MdFavorite } from "react-icons/md";
+import {AiOutlineClose} from "react-icons/ai";
+import {banner} from "./images/olx_banner.jpg";
 import { Link} from 'react-router-dom';
 import Modal from 'react-awesome-modal';
 import Data from '../../Data.json';
@@ -43,14 +45,19 @@ const Cards = (props) => {
         return(
 
         <div className="col-lg-3 col-md-4 col-sm-6">
-              <Modal visible={visible} width="400" height="584" effect="fadeInUp" onClickAway={() => closeModal()}>
-                        <div className="mt-5 p-3 popup_wrapper">
-
-
-                            <div className="row mx-auto mb-2">
+              <Modal
+                        visible={visible}
+                        width="400"
+                        height="584"
+                        effect="fadeInUp"
+                        onClickAway={() =>closeModal()}
+                    >
+                        <div className="p-3 popup_wrapper">
+                        <a href="javascript:void(0);" onClick={() =>closeModal()} className="d-flex justify-content-end"><AiOutlineClose size={40}></AiOutlineClose></a>
+                            <div className="row mx-auto mb-2 mt-5">
 
                                 <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
-
+                                
                             </div>
 
                             <div className="row mx-auto mb-2">
@@ -60,7 +67,7 @@ const Cards = (props) => {
                             </div>
                             <div className="row mx-auto mb-2">
                                 
-                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()}>Continue with google</button>
+                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()} >Continue with google</button>
                                 
                             </div>
                             <div className="row mx-auto mb-2">
@@ -69,7 +76,12 @@ const Cards = (props) => {
                                 
                             </div>
 
-                            <a href="javascript:void(0);" onClick={() => closeModal()}>Close</a>
+                            <div className="row mx-auto mb-2 d-flex justify-content-center">
+                            <p className="text-muted"><small>We won't share your personal details with anyone</small></p>
+                            <p className="text-muted text-center mt-0 pt-0"><small>If you continue, you are accepting <span className="text-primary">OLX Terms</span></small></p>
+                            <p className="text-center text-primary mt-0  pt-0"><small>and Conditions</small></p>
+                            </div>
+                           
                         </div>
                     </Modal>
             <div className="card w-100 card-product mt-3 shadow">
@@ -144,6 +156,7 @@ const Product = () => {
     return (
         <div>
         <Main name={user.displayName} photoUrl={user.photoURL}/>
+        <img src={banner} className="img-fluid"></img>
         <div className="container mt-5 mb-0">
             <div className="row">
                 {Object.keys(data).map((product,key) => (

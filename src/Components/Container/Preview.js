@@ -3,6 +3,7 @@ import { UserContext } from "../../provider/Userprovider";
 import Header from './Header';
 import Footer from './Footer';
 import { MdFavorite } from "react-icons/md"
+import {AiOutlineClose} from 'react-icons/ai'
 import avatar from './images/avatar.png';
 import { useParams } from 'react-router-dom';
 import Data from '../../Data.json';
@@ -64,7 +65,7 @@ export default function Preview() {
     if (!data) {
         return <h1>Not Found</h1>
     }
-    if(user !== null){
+    if(user != null){
         return (
             <div>
                 <Main name={user.displayName} photoUrl={user.photoURL}/>
@@ -119,14 +120,19 @@ export default function Preview() {
     return(
         <div>
             <Header/>
-            <Modal visible={visible} width="400" height="584" effect="fadeInUp" onClickAway={() => closeModal()}>
-                        <div className="mt-5 p-3 popup_wrapper">
-
-
-                            <div className="row mx-auto mb-2">
+            <Modal
+                        visible={visible}
+                        width="400"
+                        height="584"
+                        effect="fadeInUp"
+                        onClickAway={() =>closeModal()}
+                    >
+                        <div className="p-3 popup_wrapper">
+                        <a href="javascript:void(0);" onClick={() =>closeModal()} className="d-flex justify-content-end"><AiOutlineClose size={40}></AiOutlineClose></a>
+                            <div className="row mx-auto mb-2 mt-5">
 
                                 <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
-
+                                
                             </div>
 
                             <div className="row mx-auto mb-2">
@@ -136,7 +142,7 @@ export default function Preview() {
                             </div>
                             <div className="row mx-auto mb-2">
                                 
-                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()}>Continue with google</button>
+                                <button className="btn btn-lg btn-block btn-outline popup-button" onClick={()=>signInWithGoogle()} >Continue with google</button>
                                 
                             </div>
                             <div className="row mx-auto mb-2">
@@ -145,7 +151,12 @@ export default function Preview() {
                                 
                             </div>
 
-                            <a href="javascript:void(0);" onClick={() => closeModal()}>Close</a>
+                            <div className="row mx-auto mb-2 d-flex justify-content-center">
+                            <p className="text-muted"><small>We won't share your personal details with anyone</small></p>
+                            <p className="text-muted text-center mt-0 pt-0"><small>If you continue, you are accepting <span className="text-primary">OLX Terms</span></small></p>
+                            <p className="text-center text-primary mt-0  pt-0"><small>and Conditions</small></p>
+                            </div>
+                           
                         </div>
                     </Modal>
             <div className="container">

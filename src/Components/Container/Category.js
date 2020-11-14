@@ -1,6 +1,4 @@
 import React from 'react';
-import banner from './images/olx0.png';
-import previwebanner from './images/previewbanner.png'
 function Category(props) {
     return (
       <div className="category-section">

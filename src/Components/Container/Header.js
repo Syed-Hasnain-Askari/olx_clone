@@ -1,10 +1,11 @@
 import React, { useContext, useState} from 'react';
 import logo from './images/logo.webp';
+import {AiOutlineClose} from 'react-icons/ai'
+import banner from './images/olx_banner.jpg'
 import { MdMyLocation } from "react-icons/md";
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import Modal from 'react-awesome-modal';
 import { signInWithGoogle } from '../../firebase'
-import previewbanner from './images/previewbanner.png'
 import { UserContext } from "../../provider/Userprovider";
 import './App.css';
 import Category from './Category';
@@ -30,13 +31,12 @@ import Category from './Category';
                         effect="fadeInUp"
                         onClickAway={() =>closeModal()}
                     >
-                        <div className="mt-5 p-3 popup_wrapper">
-
-
-                            <div className="row mx-auto mb-2">
+                        <div className="p-3 popup_wrapper">
+                        <a href="javascript:void(0);" onClick={() =>closeModal()} className="d-flex justify-content-end"><AiOutlineClose size={40}></AiOutlineClose></a>
+                            <div className="row mx-auto mb-2 mt-5">
 
                                 <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
-
+                                
                             </div>
 
                             <div className="row mx-auto mb-2">
@@ -55,12 +55,17 @@ import Category from './Category';
                                 
                             </div>
 
-                            <a href="javascript:void(0);" onClick={() =>closeModal()}>Close</a>
+                            <div className="row mx-auto mb-2 d-flex justify-content-center">
+                            <p className="text-muted"><small>We won't share your personal details with anyone</small></p>
+                            <p className="text-muted text-center mt-0 pt-0"><small>If you continue, you are accepting <span className="text-primary">OLX Terms</span></small></p>
+                            <p className="text-center text-primary mt-0  pt-0"><small>and Conditions</small></p>
+                            </div>
+                           
                         </div>
                     </Modal>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top top-navbar">
                     <a className="navbar-brand" href="#">
-                        <img src={logo} className="img-thumbnil logo"></img>
+                        
                     </a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />
@@ -136,7 +141,7 @@ import Category from './Category';
                     </div>
                 </nav>
                 <Category></Category>
-                <img src={previewbanner} className="img-fluid d-block w-100"></img>
+                <img src={banner} className="img-fluid h-100 w-100 d-block"></img>
             </>
         )
 
