@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import firebase from 'firebase'
 import 'firebase/storage'
 import {UserContext} from '../../provider/Userprovider';
@@ -8,12 +8,31 @@ import {AiOutlineArrowLeft} from 'react-icons/ai'
 import {FiCamera} from 'react-icons/fi';
 function SellButton() {
       const user = useContext(UserContext)
-      const reader = new FileReader();
-
       const [image1,setImage1] = useState(addImage)
       const [image2,setImage2] = useState(addImage)
-
+      const [data,setData] = useState({user:""})
+      const [name,setName] = useState("")
+      const [lname,setLastName] = useState("")
+      const [price,setPrice] = useState("")
       
+      useEffect( () => {
+        const fetchData = async () => {
+          const db = firebase.database();
+           db.ref("Sell_Ads/Users").on("value",function(Snapshot) {
+            let allNotes = [];
+            Snapshot.forEach(function(snap) {
+              allNotes.push(snap.val());
+            });
+            setData({user:allNotes})
+            
+        });
+      
+        };
+        fetchData();
+        
+      }, []);
+      console.log(data.user)
+
       const imageHandler = (e) => {
         const reader = new FileReader();
         reader.onload = () =>{
@@ -23,6 +42,37 @@ function SellButton() {
         }
         reader.readAsDataURL(e.target.files[0])
      }
+  //    const nameHandleChange = (e)=> {
+  //     setName({
+  //         name: e.target.value,
+  //       });
+  // }
+  // const lastnameHandleChange = (e)=> {
+  //     setLastName({
+  //         lname: e.target.value,
+  //       });
+  // }
+  // const priceHandleChange = (e)=> {
+  //     setPrice({
+  //         price: e.target.value,
+  //       });
+  
+  const createNote = ()=> {
+        
+    const d = new Date().toDateString()
+    firebase.database().ref("Sell_Ads/Users").push()
+    .set({
+      name,
+      lname,
+      price,
+      d,
+    })
+    .then(_ => {
+      setName("")
+      setLastName("")
+      setPrice("")
+    });
+}
      const upload=(files)=>{const file = files[0];
     
       var uploadTask = firebase.storage().ref().child(`images/${file.name}`).put(file);
@@ -65,20 +115,7 @@ function SellButton() {
       //   // var ref = firebase.storage().ref().child(`images/${file.File.name}`).put(file.File);
       // }
   
-      const [data,setData] = useState({})
-      // const click = ()=>{
-      //   const price = document.getElementById("price").value
-      //   const fname = document.getElementById("name").value
-      //   const lname = document.getElementById("lname").value
-      //   setData({
-      //     price:price,
-      //     fname:fname,
-      //     lname:lname,
-      //   })
-      //   console.log(price)
-      //   console.log(fname)
-      //   console.log(lname)
-      // }
+     
 
       if(user!=null){
         const name = user.displayName
@@ -128,12 +165,12 @@ function SellButton() {
     </div>
     <div className="needs-validation" novalidate>
     <p className="card-text">First name</p>
-    <input type="text" class="form-control form-control-lg" id="name" required></input>
+    <input type="text" class="form-control form-control-lg" id="name" onChange={(e)=>setName(e.target.value)} required></input>
       <div class="valid-feedback">
         Looks good!
       </div>
       <p className="card-text">Last name</p>
-    <input type="text" class="form-control form-control-lg" id="lname" required></input>
+    <input type="text" class="form-control form-control-lg" id="lname" onChange={(e)=>setLastName(e.target.value)} required></input>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -141,7 +178,7 @@ function SellButton() {
   <hr/>
   <h5 className="card-title mt-4">SET PRICE</h5>
   <p><small>Price</small></p>
-  <input type="text" class="form-control form-control-lg d-inline-block" id="price" placeholder="Username"></input>
+  <input type="text" class="form-control form-control-lg d-inline-block" id="price" onChange={(e)=>setPrice(e.target.value)} placeholder="Username"></input>
   <hr/>
   <h5 className="card-title mt-5">Upload upto 12 Photos</h5>
   <div className="row">
@@ -198,7 +235,7 @@ function SellButton() {
         <img src={photoUrl} className="mr-3 rounded-circle" alt="..." style={{width:"100px",height:"100px"}}/>
         <div className="media-body">
         <p className="mt-0 pb-0 font-weight-normal mb0">Name</p>
-    <input type="text" class="form-control-lg text-dark border border-secondary mb0" value={name} ></input>
+      <input type="text" class="form-control-lg text-dark border border-secondary mb0" value={name}  ></input>
       </div>
         </div>
         </div>
@@ -219,7 +256,7 @@ function SellButton() {
           </div>
         </div>
 <hr/>
-  <button className="btn btn-outline-info mt-4 ml-3">Post now</button>
+  <button className="btn btn-outline-info mt-4 ml-3" onClick={()=>createNote()} >Post now</button>
     </div>
   </div>
 </div>
