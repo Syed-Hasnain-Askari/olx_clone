@@ -197,7 +197,7 @@ function SellButton() {
               </div>
               <hr />
               <h5 className="card-title mt-4"></h5>
-              <p><small>Set Price</small></p>
+              <p className="text-muted"><small>Set Price</small></p>
               <input type="text" class="form-control form-control-lg d-inline-block" id="price" onChange={(e) => setPrice(e.target.value)} placeholder="Username" required></input>
               <hr />
               <h5 className="card-title mt-5">Upload upto 12 Photos</h5>
