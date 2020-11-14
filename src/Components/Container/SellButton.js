@@ -2,10 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import firebase from 'firebase'
 import 'firebase/storage'
 import { UserContext } from '../../provider/Userprovider';
+import Product from '../Container/Products';
+import {Link} from 'react-router-dom'
 import logo from './images/logo.webp';
 import addImage from './images/addimage.png';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { FiCamera } from 'react-icons/fi';
+
 function SellButton() {
   const user = useContext(UserContext);
   const [image1, setImage1] = useState(addImage);
@@ -111,7 +113,7 @@ function SellButton() {
 
         <nav class="navbar navbar-light bg-light">
           <a href="#" className="navbar-brand ml-4">
-            <AiOutlineArrowLeft size={26} />
+            <Link to={'/Products'}><AiOutlineArrowLeft size={26} /></Link>
             <img src={logo} className="img-thumbnil logo ml-4"></img>
           </a>
         </nav>

@@ -2,14 +2,17 @@ import React, { useState,useContext } from 'react';
 import { UserContext } from "../../provider/Userprovider";
 import Header from './Header';
 import Footer from './Footer';
+import previewbanner from './images/preview_banner.png';
 import { MdFavorite } from "react-icons/md"
 import {AiOutlineClose} from 'react-icons/ai'
 import avatar from './images/avatar.png';
+import staticmap from './images/staticmap.png';
 import { useParams } from 'react-router-dom';
 import Data from '../../Data.json';
 import Main from './Main';
 import Modal from 'react-awesome-modal';
 import { signInWithGoogle } from '../../firebase';
+import {FiPhone} from 'react-icons/fi'
 
 export default function Preview() {
     const [color, setColors] = useState("#333");
@@ -69,7 +72,9 @@ export default function Preview() {
         return (
             <div>
                 <Main name={user.displayName} photoUrl={user.photoURL}/>
+               
                 <div className="container">
+                <img src={previewbanner} className="img-fluid preview-banner mt-3"></img>
                     <div className="row mt-5">
                         <div className="col-md-8 col-sm-12 col-lg-8">
                             <img src={data.image} className="img-fluid" alt="Responsive image"></img>
@@ -106,13 +111,23 @@ export default function Preview() {
     
                                     </div>
                                 </div>
-                                <button className="btn btn-primary  mx-5 mt-3">Chat with seller</button>
-                            </div>
-    
+                                <button className="btn seller_button  mx-5 mt-3">Chat with seller</button>
+                            <a className="mt-3 text-center text-decoration-none"><FiPhone size={30}></FiPhone>*********<span className="ml-2 text-primary"><small><u>show number</u></small></span></a>
                         </div>
-    
+                        <div className="card mt-2 " style={{height:"270px"}}>
+                            <h2 className="card-title ml-3 mt-4">Posted In</h2>
+                            <p className="text-capitalize card-subtitle text-muted ml-3 mt-3"><small>Member since jun 2020</small></p>
+                            <div className="media ml-3">
+                                <img src={staticmap} className="mr-3 img-fluid mt-3 " alt="..."></img>
+           
+                            </div>
+                            
+                        </div>
+
                     </div>
+
                 </div>
+            </div>
                 <Footer/>
             </div>
         )
@@ -160,6 +175,7 @@ export default function Preview() {
                         </div>
                     </Modal>
             <div className="container">
+            <img src={previewbanner} className="img-fluid preview-banner mt-3"></img>
                 <div className="row mt-5">
                     <div className="col-md-8 col-sm-12 col-lg-8">
                         <img src={data.image} className="img-fluid" alt="Responsive image"></img>
@@ -186,7 +202,7 @@ export default function Preview() {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card" style={{height:"270px"}}>
                             <h2 className="card-title ml-3 mt-4">Seller Description</h2>
                             <div className="media ml-3">
                                 <img src={avatar} className="mr-3 rounded-circle avatar " alt="..."></img>
@@ -196,7 +212,17 @@ export default function Preview() {
 
                                 </div>
                             </div>
-                            <button className="btn btn-primary  mx-5 mt-3">Chat with seller</button>
+                            <button className="btn seller_button  mx-5 mt-3">Chat with seller</button>
+                            <a className="mt-3 text-center text-decoration-none"><FiPhone size={30}></FiPhone>*********<span className="ml-2 text-primary"><small><u>show number</u></small></span></a>
+                        </div>
+                        <div className="card mt-2 " style={{height:"270px"}}>
+                            <h2 className="card-title ml-3 mt-4">Posted In</h2>
+                            <p className="text-capitalize card-subtitle text-muted ml-3 mt-3"><small>Member since jun 2020</small></p>
+                            <div className="media ml-3">
+                                <img src={staticmap} className="mr-3 img-fluid mt-3 " alt="..."></img>
+           
+                            </div>
+                            
                         </div>
 
                     </div>
