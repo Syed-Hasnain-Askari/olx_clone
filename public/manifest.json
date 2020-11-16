@@ -22,7 +22,7 @@
       "sizes": "256x256",
       "type": "image/png"
     }],
-   "start_url": "index.html",
+   "start_url": ".",
   "display": "standalone",
   "gcm_sender_id" : "103953800507",
   "background_color": "#5C307F",

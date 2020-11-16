@@ -272,7 +272,7 @@ function SellButton() {
               <div className="row">
                 <div className="col-md-6">
                   <label>Mobile Phone Number</label>
-                  <input type="text" class="form-control form-control-lg" value="Hasnain"></input>
+                  <input type="text" class="form-control form-control-lg" ></input>
                 </div>
               </div>
               <hr />
