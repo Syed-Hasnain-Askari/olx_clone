@@ -1,4 +1,4 @@
-import React, { useState,useContext} from 'react';
+import React, { useState,useContext,useEffect} from 'react';
 import { MdFavorite } from "react-icons/md";
 import {AiOutlineClose} from "react-icons/ai";
 import {banner} from "./images/olx_banner.jpg";
@@ -10,6 +10,7 @@ import { signInWithGoogle } from '../../firebase'
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
+import firebase from 'firebase/app'
 const Cards = (props) => {
 
     const user = useContext(UserContext);
@@ -147,9 +148,41 @@ const Cards = (props) => {
         );
 }   
 const Product = () => {
+
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./firebase-messaging-sw.js")
+          .then(function(registration) {
+            console.log("Registration successful, scope is:", registration.scope);
+          })
+          .catch(function(err) {
+            console.log("Service worker registration failed, error:", err);
+          });
+      }
+      useEffect(() => {
+        const messaging = firebase.messaging()
+        navigator.serviceWorker.addEventListener("message", (message) => console.log(message));
+        const fetchData = async () => {
+            messaging.requestPermission()
+            .then(async function() {
+              const token = await messaging.getToken();
+              console.log(token)
+            })
+            .catch(function(err) {
+              console.log("Unable to get permission to notify.", err);
+            });
+         navigator.serviceWorker.addEventListener("message", (message) => 
+         console.log(message))};
+        fetchData();
+    
+      }, []);
+      
+
     const user = useContext(UserContext);
     const [data, setdata] = useState(Data)
     const [name,setName] = useState(user)
+  
+
     if(user != null){   
     return (
         <div>

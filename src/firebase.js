@@ -13,7 +13,6 @@ const firebaseConfig = {
   };
 
   const provider = new firebase.auth.GoogleAuthProvider();
-
   provider.setCustomParameters({
     promt: "select_account",
   });
@@ -22,5 +21,6 @@ const firebaseConfig = {
     auth.signInWithRedirect(provider);
   };
   
-  firebase.initializeApp(firebaseConfig);
-  export const auth = firebase.auth();
+  firebase.initializeApp(firebaseConfig)
+
+export const auth = firebase.auth();
