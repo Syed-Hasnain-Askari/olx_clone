@@ -271,7 +271,7 @@ function SellButton() {
               </div>
               <div className="row">
                 <div className="col-md-6">
-                  <label>Mobile Phone Number</label>
+                  <label>Mobile Phone</label>
                   <input type="text" class="form-control form-control-lg" ></input>
                 </div>
               </div>
