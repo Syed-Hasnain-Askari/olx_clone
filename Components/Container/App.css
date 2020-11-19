@@ -1,0 +1,295 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Roboto', sans-serif;
+  color: #002f34;
+}
+/* NavigationBar */
+.top-navbar{
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+  height: 68px;
+}
+code {
+  font-family: 'Courier New',monospace;
+}
+.logo{
+  background:transparent;
+  width: 60px;
+  height: 60px;
+}
+/* Location Search Bar Section */
+.input-icons ion-icon{
+  position: absolute; 
+  width: 25px;
+  height: 25px;
+  fill-rule: evenodd;
+  padding: 10px; 
+  min-width: 50px; 
+  text-align: center; 
+  margin-top: 12px;
+  margin-left: 0px;
+}
+.input-icons { 
+  width: 100%; 
+  margin-bottom: 10px; 
+} 
+.location{
+    margin-top: 9px;
+    height: 48px;
+    width: 100%;
+    outline: 0;
+    border-width: 0;
+    font-size: 16px;
+    padding: 0 8px;
+    border: 2px solid #002f34;
+    border-radius: 4px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: #fff;
+    padding: 0 0 0 16px;
+    text-align: center;
+}
+.nav-item-location{
+  width: 300px;
+  margin-left: 10px;
+}
+.dropdown-menu{
+  width: 300px;
+}
+.chevron-down-header ion-icon{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-left: 50px;
+  margin-top: -12px;
+  fill: #002f34;
+}
+.nav-item-find{
+    width: 500px;
+}
+/* Find Search Box Section */
+.find{
+  margin-top: 9px;
+  margin-left: 10px;
+  height: 48px;
+  width: 100%;
+  outline: 0;
+  border-width: 0;
+  font-size: 16px;
+  padding: 0 8px;
+  border: 2px solid #002f34;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: #fff;
+  padding: 0 0 0 16px;
+  text-align: left;
+}
+.search-icon{
+    min-width: 48px;
+    height: 48px;
+    cursor: pointer;
+    background-color: #002f34;
+    border-radius: 0 4px 4px 0;
+    margin-top: 9px;
+}
+.search-icon ion-icon{
+  width: 25px;
+  height: 25px;
+  color: white;
+}
+a {
+  color: #002f34;
+  text-decoration: none;
+}
+
+a:hover 
+{ 
+   text-decoration:none; 
+   cursor:pointer;  
+}
+.text-login{
+    margin-top: 13px;
+    color: #002f34;
+    border-bottom: 2px solid #002f34;
+    padding: 0;
+    height: auto;
+    margin-right: 30px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+.chat-icon{
+  margin-top: 9px;
+  border-color: black;
+}
+.user-icon{
+  margin-top: 10px;
+  width: 35px;
+  height: 35px;
+}
+.chevron-down ion-icon{
+
+  width: 25px;
+  height: 25px;
+}
+/* Sell Button Design */
+.sell-button{
+  width:90px;
+  background-color: white;
+  border-top:5px solid #23E5DB;
+  border-left:5px solid #FFCE32;
+  border-right:5px solid yellow;
+  border-bottom:5px solid #3A77FF;
+  height:50px;color:black;
+  font-weight: bold;
+  font-size: 15px;
+}
+/* category-section */
+.category-section{
+  margin-top: 60px;
+}
+.category-section a{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+.category-section .navbar-brand{
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  color: #002f34;
+}
+/* Pop Up dialog Box Section */
+.popup_wrapper{
+  margin: 0 16px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+.popup-button{
+  color: #002f34;
+  border-radius: 4px;
+  border: 2px solid #002f34;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1.15;
+  font-family: 'Roboto', sans-serif;
+}
+/* Card Section */
+.card{
+  cursor: pointer;
+}
+.card-title{
+  font-family: 'Roboto', sans-serif;
+  color: #002f34;
+  font-size: 20px;
+  font-weight: 700;
+}
+.card-subtitle{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: rgba(0,47,52,.64);
+}
+.card-img{
+ height: 180px;
+}
+.avatar{
+  width: 68px;
+  height: 68px;
+}
+/*FOOTER*/
+footer {
+  bottom: 0;
+}
+
+footer a {
+  color: #002f34;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 12px;
+  transition-duration: 0.2s;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+footer a:hover {
+  color: rgba(0,47,52,.64);
+  text-decoration: none;
+}
+
+.copy {
+  font-size: 12px;
+  padding: 10px;
+  border-top: 1px solid #FFFFFF;
+} 
+
+.footer-middle {
+  padding-top: 2em;
+  color: #002f34;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/*SOCİAL İCONS*/
+
+/* footer social icons */
+
+ul.social-network {
+  list-style: none;
+  display: inline;
+  margin-left: 0 !important;
+  padding: 0;
+}
+
+ul.social-network li {
+  display: inline;
+  margin: 0 5px;
+}
+
+
+/* footer social icons */
+
+.social-circle li a {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 0 auto;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.social-circle li i {
+  margin: 0;
+  line-height: 30px;
+  text-align: center;
+}
+
+.social-network a {
+  background-color: #F9F9F9;
+}
+.botton-footer{
+  background-color: #002f34;
+  color: white;
+}
+/* FavList.Js File Section */
+.Favlist-container{
+  height: 700px;
+}
+/* Preview File Section */
+.seller_button{
+  color: #fff;
+  background-color: #002f34;
+  border-radius: 4px;
+  border: 5px solid #002f34;
+  padding: 0 7px;
+}

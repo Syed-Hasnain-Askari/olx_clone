@@ -1,0 +1,94 @@
+{
+    
+    "product1":
+        
+        {
+            "id":1,
+            "title":"watch",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/images/watch.jpg"
+
+        },
+    "product2":
+        {
+            "id":2,
+            "title":"Camera",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/images/camera.jpg"
+
+        },
+        "product3":
+        {
+            "id":3,
+            "title":"Bicycle",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/images/bicycle.jpg"
+
+        },
+        "product4":
+        {
+            "id":4,
+            "title":"Ipod",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/images/ipod.jpg"
+
+        },
+        "product5":
+        {
+            "id":5,
+            "title":"Nike Shoes",
+            "description":"Nike Shoes",
+            "price":"20,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/images/nike.jpg"
+
+        },
+        "product6":
+        {
+            "id":6,
+            "title":"HeadPhone",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/images/product1.jpg"
+
+        },
+        "product7":
+        {
+            "id":7,
+            "title":"DSLR Lenses",
+            "description":"Handsome Watch",
+            "price":"10,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/images/lense.jpg"
+            
+
+        },
+        "product8":
+        {
+            "id":8,
+            "title":"Glasses",
+            "description":"Handsome Watch",
+            "price":"5,000",
+            "location":"Karachi",
+            "date":"today",
+            "image":"/images/glasses.jpg"
+
+        }
+    
+}
