@@ -143,7 +143,7 @@ function SellButton() {
 
         <nav class="navbar navbar-light bg-light">
           <a href="#" className="navbar-brand ml-4">
-            <Link to={'/Products'}><AiOutlineArrowLeft size={26} /></Link>
+            <Link to={'/'}><AiOutlineArrowLeft size={26} /></Link>
             <img src={logo} className="img-thumbnil logo ml-4"></img>
           </a>
         </nav>

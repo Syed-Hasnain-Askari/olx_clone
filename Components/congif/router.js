@@ -10,17 +10,16 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  browserHistory
 } from "react-router-dom";
+import DashBoard from "../Container/DashBoard";
 function AppRoute(){
-    
         const user = useContext(UserContext);
-        console.log(user)
         return(
             user ?
             <Router>
                 <Switch>
-                <Route exact path="/" component={Product}></Route>
-                <Route path='/Products' component={Product}></Route>
+                <Route exact path="/" component={DashBoard}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
                 <Route path='/SellButton' component={SellButton}></Route>
                 <Route path='/Ads' component={Ads}></Route>
@@ -32,7 +31,6 @@ function AppRoute(){
             <Router>
             <Switch>
                 <Route exact path='/' component={Product}></Route>
-                <Route path='/Products' component={Product}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
                 <Route path="*"><Error/></Route>
             </Switch>
