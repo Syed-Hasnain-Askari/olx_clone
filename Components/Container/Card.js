@@ -1,10 +1,8 @@
 import React, { useState,useContext,useEffect} from 'react';
 import { MdFavorite } from "react-icons/md";
 import {AiOutlineClose} from "react-icons/ai";
-import {banner} from "./images/olx_banner.jpg";
 import { Link} from 'react-router-dom';
 import Modal from 'react-awesome-modal';
-import Data from '../../Data.json';
 import { UserContext } from "../../provider/Userprovider";
 import { signInWithGoogle } from '../../firebase'
 function Card(props){

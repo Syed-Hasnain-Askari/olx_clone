@@ -21,7 +21,6 @@ const firebaseConfig = {
   export const signInWithGoogle = () => {
     auth.signInWithRedirect(provider);
   };
-  
   firebase.initializeApp(firebaseConfig)
 
 export const auth = firebase.auth();

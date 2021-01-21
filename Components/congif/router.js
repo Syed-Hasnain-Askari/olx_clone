@@ -5,6 +5,7 @@ import FavList from '../Container/FavList'
 import Error from '../Container/Error';
 import SellButton from '../Container/SellButton';
 import Ads from '../Container/Ads';
+import SignIn from '../Container/SignIn'
 import { UserContext } from "../../provider/Userprovider";
 import {
   BrowserRouter as Router,
@@ -13,6 +14,7 @@ import {
   browserHistory
 } from "react-router-dom";
 import DashBoard from "../Container/DashBoard";
+import Signup from "../Container/Signup";
 function AppRoute(){
         const user = useContext(UserContext);
         return(
@@ -32,6 +34,8 @@ function AppRoute(){
             <Switch>
                 <Route exact path='/' component={Product}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
+                <Route path="/SignUp" component={Signup}></Route>
+                <Route path="/SignIn" component={SignIn}></Route>
                 <Route path="*"><Error/></Route>
             </Switch>
             </Router>

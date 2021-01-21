@@ -9,6 +9,7 @@ function DashBoard() {
     const user = useContext(UserContext);
     const [data, setdata] = useState(Data)
     const [name,setName] = useState(user)
+    const [loading,setLoading] = useState("")
     if(user != null){
     return (
         <div>
@@ -30,6 +31,7 @@ function DashBoard() {
                     </Card>
 
                 ))}
+                
             </div>
             </div>
             <Footer/>

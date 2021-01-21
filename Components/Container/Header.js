@@ -6,12 +6,12 @@ import { HiOutlineLocationMarker } from 'react-icons/hi';
 import Modal from 'react-awesome-modal';
 import { signInWithGoogle } from '../../firebase'
 import './App.css';
+import  {useHistory} from 'react-router-dom'
 import Category from './Category';
-import {auth} from '../../firebase';
-import firebase from 'firebase';
 
  const Header = ()=>{
          const [visible,setVisible] = useState(false);
+         const history = useHistory()
         
     const openModal = ()=> {
        setVisible(true)
@@ -20,7 +20,7 @@ import firebase from 'firebase';
     const closeModal = ()=> {
         setVisible(false)
     }
-     
+
     return (
             <>
                   <Modal
@@ -34,7 +34,11 @@ import firebase from 'firebase';
                         <a href="javascript:void(0);" onClick={() =>closeModal()} className="d-flex justify-content-end"><AiOutlineClose size={40}></AiOutlineClose></a>
                             <div className="row mx-auto mb-2 mt-5">
 
-                                <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
+                                <button className="btn btn-lg btn-block btn-outline popup-button text"
+                                        onClick={()=>history.push('/Signup')}>
+                                        
+                                Continue with Email
+                                </button>
                                 
                             </div>
 
@@ -71,7 +75,13 @@ import firebase from 'firebase';
                     <a className="navbar-brand" href="#">
                         
                     </a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler" 
+                            type="button" 
+                            data-toggle="collapse" 
+                            data-target="#navbarSupportedContent" 
+                            aria-controls="navbarSupportedContent" 
+                            aria-expanded="false" 
+                            aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">

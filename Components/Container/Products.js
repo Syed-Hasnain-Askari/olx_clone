@@ -1,10 +1,9 @@
 import React, { useState,useContext,useEffect} from 'react';
-import DashBoard from './DashBoard';
 import Data from '../../Data.json';
 import { UserContext } from "../../provider/Userprovider";
 import Header from './Header';
 import Footer from './Footer';
-import {useHistory, useHistroy} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import Card from './Card';
 const Product = () => {
     //Push Notification
