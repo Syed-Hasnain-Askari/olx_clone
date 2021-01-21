@@ -35,8 +35,7 @@ import Category from './Category';
                             <div className="row mx-auto mb-2 mt-5">
 
                                 <button className="btn btn-lg btn-block btn-outline popup-button text"
-                                        onClick={()=>history.push('/Signup')}>
-                                        
+                                        onClick={()=>history.push('/Signup')}>  
                                 Continue with Email
                                 </button>
                                 
@@ -57,12 +56,6 @@ import Category from './Category';
                                 </button>
                                 
                             </div>
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button">Continue with email</button>
-                                
-                            </div>
-
                             <div className="row mx-auto mb-2 d-flex justify-content-center">
                             <p className="text-muted"><small>We won't share your personal details with anyone</small></p>
                             <p className="text-muted text-center mt-0 pt-0"><small>If you continue, you are accepting <span className="text-primary">OLX Terms</span></small></p>

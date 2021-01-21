@@ -1,5 +1,4 @@
 import React, {useContext } from "react";
-import Product from '../Container/Products';
 import Preview from '../Container/Preview';
 import FavList from '../Container/FavList'
 import Error from '../Container/Error';
@@ -15,6 +14,7 @@ import {
 } from "react-router-dom";
 import DashBoard from "../Container/DashBoard";
 import Signup from "../Container/Signup";
+import Products from "../Container/Products";
 function AppRoute(){
         const user = useContext(UserContext);
         return(
@@ -32,7 +32,7 @@ function AppRoute(){
            :
             <Router>
             <Switch>
-                <Route exact path='/' component={Product}></Route>
+                <Route exact path='/' component={Products}></Route>
                 <Route path='/Preview/:id' component={Preview}></Route>
                 <Route path="/SignUp" component={Signup}></Route>
                 <Route path="/SignIn" component={SignIn}></Route>

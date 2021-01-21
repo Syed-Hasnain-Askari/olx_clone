@@ -1,13 +1,14 @@
 import React, { useState,useContext,useEffect} from 'react';
 import { MdFavorite } from "react-icons/md";
 import {AiOutlineClose} from "react-icons/ai";
-import { Link} from 'react-router-dom';
+import { Link,useHistory} from 'react-router-dom';
 import Modal from 'react-awesome-modal';
 import { UserContext } from "../../provider/Userprovider";
 import { signInWithGoogle } from '../../firebase'
 function Card(props){
 
     const user = useContext(UserContext);
+    const history = useHistory()
     const [userAuth,setUserAuth] = useState(user)
     const [color, setColors] = useState("#333");
     const [active, setActive] = useState(false);
@@ -48,7 +49,10 @@ function Card(props){
                         <a href="javascript:void(0);" onClick={() =>closeModal()} className="d-flex justify-content-end"><AiOutlineClose size={40}></AiOutlineClose></a>
                             <div className="row mx-auto mb-2 mt-5">
 
-                                <button className="btn btn-lg btn-block btn-outline popup-button text">Continue with phone</button>
+                                <button className="btn btn-lg btn-block btn-outline popup-button text"
+                                        onClick={()=>history.push('/Signup')}>
+                                Continue with email
+                                </button>
                                 
                             </div>
 
@@ -65,14 +69,7 @@ function Card(props){
                                 </button>
                                 
                             </div>
-                            <div className="row mx-auto mb-2">
-                                
-                                <button className="btn btn-lg btn-block btn-outline popup-button">
-                                Continue with email
-                                </button>
-                                
-                            </div>
-
+                
                             <div className="row mx-auto mb-2 d-flex justify-content-center">
                             <p className="text-muted"><small>We won't share your personal details with anyone</small></p>
                             <p className="text-muted text-center mt-0 pt-0"><small>If you continue, you are accepting <span className="text-primary">OLX Terms</span></small></p>

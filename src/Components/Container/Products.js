@@ -5,7 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import {useHistory} from 'react-router-dom'
 import Card from './Card';
-const Product = () => {
+const Products = () => {
     //Push Notification
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker
@@ -58,4 +58,4 @@ const Product = () => {
         </div>   
     )
 }
-export default Product
+export default Products
