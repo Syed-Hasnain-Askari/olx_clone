@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import firebase from 'firebase'
 import 'firebase/storage'
 import { UserContext } from '../../provider/Userprovider';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from './images/logo.webp';
 import addImage from './images/addimage.png';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
@@ -36,11 +36,38 @@ function SellButton() {
     fetchData();
   }, []);
 
-  const imageHandler = (e) => {
+  const imageHandler1 = (e) => {
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState == 2) {
         setImage1(reader.result)
+      }
+    }
+    reader.readAsDataURL(e.target.files[0])
+  }
+  const imageHandler2 = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState == 2) {
+        setImage2(reader.result)
+      }
+    }
+    reader.readAsDataURL(e.target.files[0])
+  }
+  const imageHandler3 = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState == 2) {
+        setImage3(reader.result)
+      }
+    }
+    reader.readAsDataURL(e.target.files[0])
+  }
+  const imageHandler4 = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState == 2) {
+        setImage4(reader.result)
       }
     }
     reader.readAsDataURL(e.target.files[0])
@@ -51,52 +78,59 @@ function SellButton() {
   const Description = document.getElementById("description")
   const Price = document.getElementById("price")
   const input1 = document.getElementById("input1")
-  const validation = ()=>{
-      if(Name.value === ""){
-        alert("Enter Name")
-      }
-      else if(lastname.value === "")
-      {
-        alert("Enter Last Name")
-      }
-      else if(Description.value === "")
-      {
-        alert("Enter Description")
-      }
-      else if(Price.value === ""){
-        alert("Enter Price")
-      }
-      else if(input1.value === ""){
-        alert("Selet Image")
-      }
-      else{
-        const d = new Date().toDateString()
-        firebase.database().ref("Sell_Ads/Users").push()
-          .set({
-            name,
-            lname,
-            price,
-            title,
-            description,
-            image1,
-            d,
-          })
-          RefreashField()
-      }
+  const input2 = document.getElementById("input2")
+  const input3 = document.getElementById("input3")
+  const input4 = document.getElementById("input4")
+  const validation = () => {
+    if (Name.value === "") {
+      alert("Enter Name")
+    }
+    else if (lastname.value === "") {
+      alert("Enter Last Name")
+    }
+    else if (Description.value === "") {
+      alert("Enter Description")
+    }
+    else if (Price.value === "") {
+      alert("Enter Price")
+    }
+    else if (input1.value === "" || 
+             input2.value === "" ||
+             input3.value === "" ||
+             input4.value === "" ){
+      alert("Selet Image")
+    }
+    else {
+      const d = new Date().toDateString()
+      firebase.database().ref("Sell_Ads/Users").push()
+        .set({
+          name,
+          lname,
+          price,
+          title,
+          description,
+          image1,
+          d,
+        })
+      RefreashField()
+    }
   }
-  const RefreashField = ()=>{
+  const RefreashField = () => {
     lastname.value = ""
     Name.value = ""
     Title.value = ""
     Description.value = ""
     Price.value = ""
     input1.value = ""
+    input2.value = ""
+    input3.value = ""
+    input4.value = ""
   }
 
   const createNote = () => {
     validation()
   }
-  const upload = (files) => {
+  const upload1 = (files) => {
     const file = files[0];
 
     var uploadTask = firebase.storage().ref().child(`images/${file.name}`).put(file);
@@ -124,17 +158,90 @@ function SellButton() {
     });
 
   }
+  const upload2 = (files) => {
+    const file = files[0];
 
-  const imageHandler1 = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState == 2) {
-        setImage1(reader.result)
+    var uploadTask = firebase.storage().ref().child(`images/${file.name}`).put(file);
+    uploadTask.on('state_changed', function (snapshot) {
+
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      // console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          // console.log('Upload is paused');
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          // console.log('Upload is running');
+          break;
       }
-    }
-    reader.readAsDataURL(e.target.files[0])
-  };
+    }, function (error) {
+      // Handle unsuccessful uploads
+    }, function () {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+        // console.log('File available at', downloadURL);
+        setImage2(downloadURL)
+      });
+    });
 
+  }
+  const upload3 = (files) => {
+    const file = files[0];
+
+    var uploadTask = firebase.storage().ref().child(`images/${file.name}`).put(file);
+    uploadTask.on('state_changed', function (snapshot) {
+
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      // console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          // console.log('Upload is paused');
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          // console.log('Upload is running');
+          break;
+      }
+    }, function (error) {
+      // Handle unsuccessful uploads
+    }, function () {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+        // console.log('File available at', downloadURL);
+        setImage3(downloadURL)
+      });
+    });
+
+  }
+  const upload4 = (files) => {
+    const file = files[0];
+
+    var uploadTask = firebase.storage().ref().child(`images/${file.name}`).put(file);
+    uploadTask.on('state_changed', function (snapshot) {
+
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      // console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          // console.log('Upload is paused');
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          // console.log('Upload is running');
+          break;
+      }
+    }, function (error) {
+      // Handle unsuccessful uploads
+    }, function () {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+        // console.log('File available at', downloadURL);
+        setImage4(downloadURL)
+      });
+    });
+
+  }
   if (user != null) {
     const name = user.displayName
     const photoUrl = user.photoURL
@@ -165,7 +272,7 @@ function SellButton() {
                 <div className="row">
                   <div className="col-md-6">
                     <p className="card-text mt-4">Ad Title</p>
-                    <input type="text" class="form-control form-control-lg border border-secondary" id="title" onChange={(e)=>setTitle(e.target.value)} required ></input>
+                    <input type="text" class="form-control form-control-lg border border-secondary" id="title" onChange={(e) => setTitle(e.target.value)} required ></input>
                     <div class="valid-feedback">
                       Looks good!
       </div>
@@ -174,29 +281,49 @@ function SellButton() {
                 <div className="row">
                   <div className="col-md-6">
                     <p className="card-text mt-4">Description</p>
-                    <textarea class="form-control border border-secondary" id="description" onChange={(e)=>setDescription(e.target.value)} required></textarea>
+                    <textarea class="form-control border border-secondary border border-secondary"
+                      id="description"
+                      onChange={(e) => setDescription(e.target.value)}
+                      required>
+                    </textarea>
                     <div class="valid-feedback">
                       Looks good!
-      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="needs-validation" novalidate>
-                <p className="card-text">First name</p>
-                <input type="text" class="form-control form-control-lg" id="name" onChange={(e) => setName(e.target.value)} required></input>
-                <div class="valid-feedback">
-                  Looks good!
-      </div>
-                <p className="card-text">Last name</p>
-                <input type="text" class="form-control form-control-lg" id="lname" onChange={(e) => setLastName(e.target.value)} required></input>
-                <div class="valid-feedback">
-                  Looks good!
-      </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="needs-validation" novalidate>
+                    <p className="card-text">First name</p>
+                    <input type="text" class="form-control border border-secondary"
+                      id="name"
+                      onChange={(e) => setName(e.target.value)}
+                      required>
+
+                    </input>
+                    <div class="valid-feedback">
+                      Looks good!
+              </div>
+                    <p className="card-text">Last name</p>
+                    <input type="text" class="form-control border border-secondary" id="lname" onChange={(e) => setLastName(e.target.value)} required></input>
+                    <div class="valid-feedback">
+                      Looks good!
+              </div>
+                  </div>
+                </div>
               </div>
               <hr />
-              <h5 className="card-title mt-4"></h5>
-              <p className="text-muted"><small>Set Price</small></p>
-              <input type="text" class="form-control form-control-lg d-inline-block" id="price" onChange={(e) => setPrice(e.target.value)} placeholder="Username" required></input>
+              <div className="row">
+                <div className="col-md-6">
+                  <h5 className="card-title mt-4"></h5>
+                  <p className="text-muted"><small>Set Price</small></p>
+                  <input type="text" class="form-control border border-secondary"
+                    id="price" onChange={(e) => setPrice(e.target.value)}
+                    placeholder="Username" required>
+                  </input>
+                </div>
+              </div>
               <hr />
               <h5 className="card-title mt-5">Upload upto 12 Photos</h5>
               <div className="row">
@@ -204,27 +331,46 @@ function SellButton() {
 
                   <label htmlFor="input1"> <img src={image1} className="img-fluid" style={{ width: "150px", height: "150px" }} required></img></label>
 
-                  <input type="file" id="input1" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*"
-                    onInput={(e) => { upload(e.target.files) }} onChange={imageHandler} required></input>
-                  
+                  <input type="file" id="input1" style={{ display: "none" }}
+                    className="form-control-file mb-3" accept="image/*"
+                    onInput={(e) => { upload1(e.target.files) }}
+                    onChange={imageHandler1}
+                    required>
+                  </input>
+
                 </div>
                 <div className="col-md-3">
 
                   <label htmlFor="input2"> <img src={image2} className="img-fluid" style={{ width: "150px", height: "150px" }}></img></label>
 
-                  <input type="file" id="input2" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*" onChange={imageHandler1}></input>
+                  <input type="file" id="input2" style={{ display: "none" }}
+                    className="form-control-file mb-3"
+                    accept="image/*"
+                    onInput={(e) => { upload2(e.target.files) }}
+                    onChange={imageHandler2}>
+                  </input>
                 </div>
                 <div className="col-md-3">
 
                   <label htmlFor="input3"> <img src={image3} className="img-fluid" style={{ width: "160px", height: "150px" }}></img></label>
 
-                  <input type="file" id="input3" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*" onChange={imageHandler}></input>
+                  <input type="file" id="input3" style={{ display: "none" }}
+                    className="form-control-file mb-3"
+                    accept="image/*"
+                    onInput={(e) => { upload3(e.target.files) }}
+                    onChange={imageHandler3}
+                  ></input>
                 </div>
                 <div className="col-md-3">
 
                   <label htmlFor="input4"> <img src={image4} className="img-fluid" style={{ width: "160px", height: "150px" }}></img></label>
 
-                  <input type="file" id="input4" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*" onChange={imageHandler}></input>
+                  <input type="file" id="input4" style={{ display: "none" }}
+                    className="form-control-file mb-3"
+                    accept="image/*"
+                    onInput={(e) => { upload4(e.target.files) }}
+                    onChange={imageHandler4}
+                  ></input>
                 </div>
 
               </div>
@@ -237,15 +383,18 @@ function SellButton() {
                   <label className=" font-smaller ml-5" ><h6>Current Location</h6></label>
                 </div>
               </div>
-
-              <p className="card-text text-muted">State</p>
-              <select class="form-control form-control-lg">
-                <option>Azad Kashmir</option>
-                <option>Balochistan</option>
-                <option>Sindh</option>
-                <option>Punjab</option>
-                <option>KPK</option>
-              </select>
+              <div className="row">
+                <div className="col-md-6">
+                  <p className="card-text text-muted">State</p>
+                  <select className=" form-control custom-select-lg">
+                    <option>Azad Kashmir</option>
+                    <option>Balochistan</option>
+                    <option>Sindh</option>
+                    <option>Punjab</option>
+                    <option>KPK</option>
+                  </select>
+                </div>
+              </div>
               <hr />
               <h5 className="card-title mt-5">REVIEW YOUR DETAIL</h5>
               <div className="row ml-4">
@@ -253,7 +402,7 @@ function SellButton() {
                   <img src={photoUrl} className="mr-3 rounded-circle" alt="..." style={{ width: "100px", height: "100px" }} />
                   <div className="media-body">
                     <p className="mt-0 pb-0 font-weight-normal mb0">Name</p>
-                    <input type="text" class="form-control-lg text-dark border border-secondary mb0" value={name}  ></input>
+                    <input type="text" class="form-control-lg text-dark border border-secondary mb0" value={name}></input>
                   </div>
                 </div>
               </div>
