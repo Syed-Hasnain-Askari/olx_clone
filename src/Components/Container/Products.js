@@ -5,7 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import {useHistory} from 'react-router-dom'
 import Card from './Card';
-const Products = () => {
+const Products = (props) => {
     //Push Notification
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker
@@ -25,16 +25,26 @@ const Products = () => {
     const user = useContext(UserContext);
     const [data, setdata] = useState(Data)
     const [name,setName] = useState(user)
+    const [product,setProduct] = useState('')
     const history = useHistory()
     if(user != null){
         history.push('/')
     }
     return (
         <div>
-        <Header/>
+        <Header handleChange={(e)=>setProduct(e.target.value)}/>
         <div className="container">
             <div className="row">
-                {Object.keys(data).map((product,key) => (
+                {Object.keys(data)
+                .filter(val=>{
+                    if(product==""){
+                      return val
+                    }
+                  else if(data[val].title.toLowerCase().includes(product.toLowerCase())){
+                    return val
+                  }
+                })
+                .map((product,key) => (
                     <Card
                         key={key}
                         data={key}

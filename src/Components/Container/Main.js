@@ -95,7 +95,9 @@ function Main(props) {
                                 <input type="text" placeholder="Find Cars,Mobile Phones and more..." 
                                 className="form-control find" 
                                 aria-label="Username" 
-                                aria-describedby="basic-addon1">
+                                aria-describedby="basic-addon1"
+                                onChange={props.handleChange}
+                                >
                                 </input>
                                 <div className="input-group-prepand">
                                     <span className="input-group-text search-icon" 

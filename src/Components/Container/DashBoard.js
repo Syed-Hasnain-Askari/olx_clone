@@ -8,16 +8,28 @@ import Data from '../../Data.json';
 function DashBoard() {
     const user = useContext(UserContext);
     const [data, setdata] = useState(Data)
-    const [name,setName] = useState(user)
-    const [loading,setLoading] = useState("")
+    const [product,setProduct] = useState('')
     if(user != null){
     return (
         <div>
-        <Main name={user.displayName} photoUrl={user.photoURL}/>
+        <Main 
+            name={user.displayName} 
+            photoUrl={user.photoURL}
+            handleChange={(e)=>setProduct(e.target.value)}
+        />
         <img src={banner} className="img-fluid"></img>
         <div className="container mt-5 mb-0">
             <div className="row">
-                {Object.keys(data).map((product,key) => (
+                {Object.keys(data)
+                .filter(val=>{
+                    if(product==""){
+                      return val
+                    }
+                  else if(data[val].title.toLowerCase().includes(product.toLowerCase())){
+                    return val
+                  }
+                })
+                .map((product,key) => (
                     <Card
                         key={key}
                         data={key}

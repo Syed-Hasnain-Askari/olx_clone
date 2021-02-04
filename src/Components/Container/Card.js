@@ -114,7 +114,11 @@ function Card(props){
                         
                         <div>
                         <a className="icons mr-3 "><ion-icon name="share-social-outline"></ion-icon></a>
-                        <a className="icons"><MdFavorite onClick={() => handleClickButtonWhenLogin()} size={26} color={color}></MdFavorite></a>
+                        <a className="icons">
+                            <MdFavorite onClick={() => handleClickButtonWhenLogin()} 
+                                        size={26} color={color}>
+                            </MdFavorite>
+                        </a>
                          </div>
                         
                     </div>

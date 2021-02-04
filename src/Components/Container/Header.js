@@ -9,7 +9,7 @@ import './App.css';
 import  {useHistory} from 'react-router-dom'
 import Category from './Category';
 
- const Header = ()=>{
+ const Header = (props)=>{
          const [visible,setVisible] = useState(false);
          const history = useHistory()
         
@@ -20,6 +20,7 @@ import Category from './Category';
     const closeModal = ()=> {
         setVisible(false)
     }
+    const [item,setItem] = useState("")
 
     return (
             <>
@@ -58,7 +59,10 @@ import Category from './Category';
                             </div>
                             <div className="row mx-auto mb-2 d-flex justify-content-center">
                             <p className="text-muted"><small>We won't share your personal details with anyone</small></p>
-                            <p className="text-muted text-center mt-0 pt-0"><small>If you continue, you are accepting <span className="text-primary">OLX Terms</span></small></p>
+                            <p className="text-muted text-center mt-0 pt-0">
+                                <small>If you continue, you are accepting 
+                                <span className="text-primary">OLX Terms</span>
+                                </small></p>
                             <p className="text-center text-primary mt-0  pt-0"><small>and Conditions</small></p>
                             </div>
                            
@@ -135,9 +139,18 @@ import Category from './Category';
                                 </div>
                             </li>
                             <li className="input-group nav-item-find">
-                                <input type="text" placeholder="Find Cars,Mobile Phones and more..." className="form-control find" aria-label="Username" aria-describedby="basic-addon1"></input>
+                                <input type="text" 
+                                       placeholder="Find Cars,Mobile Phones and more..." 
+                                       className="form-control find" 
+                                       aria-label="Username" 
+                                       aria-describedby="basic-addon1"
+                                       onChange={props.handleChange}
+                                       >
+                                       </input>
                                 <div className="input-group-prepand">
-                                    <span className="input-group-text search-icon" id="basic-addon1"><ion-icon name="search"></ion-icon></span>
+                                    <span className="input-group-text search-icon" id="basic-addon1">
+                                        <ion-icon name="search"></ion-icon>
+                                    </span>
                                 </div>
                             </li>
                         </ul>

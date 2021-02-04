@@ -81,7 +81,7 @@ function Card(props){
                            
                         </div>
                     </Modal>
-            <div className="card w-100 card-product mt-3 shadow">
+            <div className="card w-100 card-product mt-3 shadow" key={props.key}>
                 <div className="d-flex justify-content-between mt-2 ml-2 mr-2">
                     <div><p className=" badge badge-warning">Feature</p></div>
                     <div><a className="icons" onClick={() => handleClickButtonWhenNotLogin()}><MdFavorite size={26} color={color}></MdFavorite></a></div>

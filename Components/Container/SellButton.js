@@ -4,6 +4,7 @@ import 'firebase/storage'
 import { UserContext } from '../../provider/Userprovider';
 import {Link} from 'react-router-dom'
 import logo from './images/logo.webp';
+import avatar from './images/avatar1/png';
 import addImage from './images/addimage.png';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 
@@ -36,15 +37,7 @@ function SellButton() {
     fetchData();
   }, []);
 
-  const imageHandler = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState == 2) {
-        setImage1(reader.result)
-      }
-    }
-    reader.readAsDataURL(e.target.files[0])
-  }
+  
   const lastname = document.getElementById("lname")
   const Title = document.getElementById("title")
   const Name = document.getElementById("name")
@@ -120,6 +113,9 @@ function SellButton() {
       uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
         // console.log('File available at', downloadURL);
         setImage1(downloadURL)
+        setImage2(downloadURL)
+        setImage3(downloadURL)
+        setImage4(downloadURL)
       });
     });
 
@@ -134,14 +130,45 @@ function SellButton() {
     }
     reader.readAsDataURL(e.target.files[0])
   };
-
+  // Image Handler 2
+  const imageHandler2 = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState == 2) {
+        setImage2(reader.result)
+      }
+    }
+    reader.readAsDataURL(e.target.files[0])
+  }
+  // Image imageHandler3
+  const imageHandler3 = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState == 2) {
+        setImage3(reader.result)
+      }
+    }
+    reader.readAsDataURL(e.target.files[0])
+  }
+  // Image imageHandler4
+  const imageHandler4 = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState == 2) {
+        setImage4(reader.result)
+      }
+    }
+    reader.readAsDataURL(e.target.files[0])
+  }
+  console.log(user)
   if (user != null) {
     const name = user.displayName
     const photoUrl = user.photoURL
+    const email = user.email
     return (
       <div>
 
-        <nav class="navbar navbar-light bg-light">
+        <nav className="navbar navbar-light bg-light">
           <a href="#" className="navbar-brand ml-4">
             <Link to={'/'}><AiOutlineArrowLeft size={26} /></Link>
             <img src={logo} className="img-thumbnil logo ml-4"></img>
@@ -161,7 +188,7 @@ function SellButton() {
               <p className="card-text">Type *</p>
               <button type="button" className="btn btn-light border border-secondary">Apple</button>
               <button type="button" className="btn btn-light border border-secondary ml-3">Q-Mobile</button>
-              <div className="needs-validation mt-3" novalidate>
+              <div className="needs-validation mt-3" noValidate>
                 <div className="row">
                   <div className="col-md-6">
                     <p className="card-text mt-4">Ad Title</p>
@@ -196,39 +223,69 @@ function SellButton() {
               <hr />
               <h5 className="card-title mt-4"></h5>
               <p className="text-muted"><small>Set Price</small></p>
-              <input type="text" class="form-control form-control-lg d-inline-block" id="price" onChange={(e) => setPrice(e.target.value)} placeholder="Username" required></input>
+              <input type="text" class="form-control form-control-lg d-inline-block" 
+                     id="price" 
+                     onChange={(e) => setPrice(e.target.value)} 
+                     required>
+                     </input>
               <hr />
+              {/* Upload Images Section Start */}
               <h5 className="card-title mt-5">Upload upto 12 Photos</h5>
               <div className="row">
                 <div className="col-md-3">
 
-                  <label htmlFor="input1"> <img src={image1} className="img-fluid" style={{ width: "150px", height: "150px" }} required></img></label>
+                  <label htmlFor="input1"> <img src={image1} 
+                        className="img-fluid" 
+                        style={{ width: "150px", height: "150px" }}>
+                        </img></label>
 
-                  <input type="file" id="input1" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*"
-                    onInput={(e) => { upload(e.target.files) }} onChange={imageHandler} required></input>
+                        <input type="file" id="input1" style={{ display: "none" }} className="form-control-file mb-3" 
+                         accept="image/*"
+                         onInput={(e) => { upload(e.target.files) }} 
+                         onChange={} required>
+                         </input>
                   
                 </div>
                 <div className="col-md-3">
 
                   <label htmlFor="input2"> <img src={image2} className="img-fluid" style={{ width: "150px", height: "150px" }}></img></label>
 
-                  <input type="file" id="input2" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*" onChange={imageHandler1}></input>
+                  <input type="file" id="input2" style={{ display: "none" }} 
+                        className="form-control-file mb-3" 
+                        accept="image/*" 
+                        onChange={imageHandler2}
+                        onInput={(e) => { upload(e.target.files) }}
+                        required
+                        >
+                        
+                        </input>
                 </div>
                 <div className="col-md-3">
 
                   <label htmlFor="input3"> <img src={image3} className="img-fluid" style={{ width: "160px", height: "150px" }}></img></label>
 
-                  <input type="file" id="input3" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*" onChange={imageHandler}></input>
+                  <input type="file" id="input3" style={{ display: "none" }} 
+                  className="form-control-file mb-3" 
+                  onChange={imageHandler3} accept="image/*"
+                  onInput={(e) => { upload(e.target.files) }}
+                  required
+                  >
+                  </input>
                 </div>
                 <div className="col-md-3">
 
-                  <label htmlFor="input4"> <img src={image4} className="img-fluid" style={{ width: "160px", height: "150px" }}></img></label>
-
-                  <input type="file" id="input4" style={{ display: "none" }} className="form-control-file mb-3" accept="image/*" onChange={imageHandler}></input>
+                  <label htmlFor="input4"> <img src={image4} className="img-fluid" style={{ width: "160px", height: "150px" }}>
+                  </img>
+                  </label>
+                  <input type="file" id="input4" style={{ display: "none" }} 
+                        className="form-control-file mb-3" 
+                        accept="image/*" 
+                        onInput={(e) => { upload(e.target.files) }}
+                        onChange={imageHandler4}></input>
                 </div>
 
               </div>
-
+            {/* Upload Images Section End */}
               <hr />
               <h5 className="card-title mt-5"><b></b>CONFIRM YOUR LOCATION</h5>
               <div className="row d-flex">
@@ -250,10 +307,13 @@ function SellButton() {
               <h5 className="card-title mt-5">REVIEW YOUR DETAIL</h5>
               <div className="row ml-4">
                 <div className="media">
+                  
                   <img src={photoUrl} className="mr-3 rounded-circle" alt="..." style={{ width: "100px", height: "100px" }} />
                   <div className="media-body">
                     <p className="mt-0 pb-0 font-weight-normal mb0">Name</p>
-                    <input type="text" class="form-control-lg text-dark border border-secondary mb0" value={name}  ></input>
+                    <input type="text" class="form-control-lg text-dark border border-secondary mb0" 
+                    value={name}>
+                    </input>
                   </div>
                 </div>
               </div>
