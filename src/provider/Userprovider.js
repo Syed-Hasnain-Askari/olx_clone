@@ -7,7 +7,9 @@ function UserProvider(props) {
   const [currentUser,setCurrentUser] = useState(null);
   useEffect(() => {
     auth.onAuthStateChanged( userAuth => {
-      setCurrentUser(userAuth);
+      userAuth
+      ?setCurrentUser(userAuth)
+      :setCurrentUser(null)
     })
   },[])
     return (
